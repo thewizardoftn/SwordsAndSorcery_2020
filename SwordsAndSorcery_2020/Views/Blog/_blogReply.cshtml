@@ -1,0 +1,45 @@
+﻿@model SwordsAndSorcery_2020.ModelTypes.BlogType
+<link href="~/Content/blogStyle.css" rel="stylesheet" />
+<script type="text/javascript">
+    $(document).ready(function () {
+       
+    });
+</script>
+@using (Html.BeginForm("SubmitPost", "Blog", new { AuthorName = @Model.AuthorName }, FormMethod.Post, null))
+{
+    @Html.TextBoxFor(m => m.Archive, new { @class = "hidden" })
+    @Html.TextBoxFor(m => m.BlogID)
+    @Html.TextBoxFor(m => m.Author, new { @class = "hidden" })
+    @Html.TextBoxFor(m => m.AuthorName, new { @class = "hidden" })
+    <div>
+        <ol>
+            <li class="listStyle">
+                <ul>
+                    <li class="inGreen floatLeft">
+                        Title:
+                    </li>
+                    <li>@Html.TextBoxFor(m => m.Title, new { @class = "titleBox" })</li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li class="inRed disInline">Date:</li>
+                    <li class="disInline">@DateTime.Now</li>
+                    <li class="inRed disInline">
+                        Author:
+                    </li>
+                    <li class="disInline">
+                        <i>@Model.AuthorName</i>
+                    </li>
+                </ul>
+            </li>
+            <li class="indentPlain listStyle">
+                Comments:<br />
+                @Html.TextAreaFor(m=>m.BlogContent)
+            </li>
+            <li class="listStyle">
+                <input type="submit" id="submitButton" value="Submit" class="buttonClass" />
+            </li>
+        </ol>
+    </div>
+}

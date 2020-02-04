@@ -1,0 +1,108 @@
+﻿@model SwordsAndSorcery_2020.Models.BookModel
+@{
+    ViewBag.Title = "Indomitus_Sum";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <script type="text/javascript">
+        var ht = parseInt(GetHeight()) - 250;
+        var beenPressed = 0;
+
+        $(document).ready(function () {
+            $('#divReadOne').hide();
+            $('#divReadTwo').hide();
+            $('#divReadThree').hide();
+            $('#read').click(function () {
+                $('#divReadOne').animate({ 'width': 40 + '%', 'height': ht + 'px', 'top': 100 + 'px', 'margin': 'auto' }, 500)
+                    .show();
+            });
+            $('#btnEstBook').click(function () {
+                window.open('http://www.amazon.com/Indomitus-Sum-Fovean-Chronicles-Book-ebook/dp/B00QMJHKX8');
+            });
+            $('.close').click(function () {
+                $(this).parent().hide();
+            });
+            
+        });
+        function Next(direction) {
+            if (direction == 'left') {
+                beenPressed = beenPressed - 1;
+                switch (beenPressed) {
+                    case -1:
+                        alert('There is nothing before the prologue');
+                        beenPressed += 1;
+                        break;
+                    case 0:
+                        $('#divReadOne').show();
+                        $('#divReadTwo').hide();
+                        break;
+                    case 1:
+                        $('#divReadTwo').show();
+                        $('#divReadThree').hide();
+                        break;
+                }
+            }
+            else {
+                switch (beenPressed) {
+                    case 0:
+                        $('#divReadOne').hide();
+                        $('#divReadTwo').animate({ 'width': 40 + '%', 'height': ht + 'px', 'top': 100 + 'px', 'margin': 'auto' }, 500)
+                       .show();
+                        beenPressed += 1;
+                        break;
+                    case 1:
+                        $('#divReadTwo').hide();
+                        $('#divReadThree').animate({ 'width': 40 + '%', 'height': ht + 'px', 'top': 100 + 'px', 'margin': 'auto' }, 500)
+                       .show();
+                        beenPressed += 1;
+                        break;
+                    case 2:
+                        alert('There are no more previews - why not buy the book?')
+                        break;
+                }
+            }
+        }
+    </script>
+<div class="book">
+    <img src="~/Images/IndomitusSumCover.jpg" class="logo" />
+    <p>
+        The battle for Fovea is on, and a girl named Raven and a man named Jack aren't even sure of which side they should be on. 
+    </p>
+    <p>
+        On one side is the Emperor, Rancor Mordetur, from their home planet of Earth. He seems to have a lot on this side - a massive army of highly trained warriors, the most feared witch on Fovea as his wife and superior technology born of another world. 
+    </p>
+    <p>
+        On the other is every Fovean Nation; savage Man and wild Uman, long-lived Uman-Chi and merciless Swamp Devils and Slee; all of them unwilling to be subjects of the Empire. 
+    </p>
+    <p>
+        But is the Empire evil, or do Raven and Jack not yet have the whole picture? And what of the song that so few people can hear, sung to them by an Uman-Chi girl barely 167 years old? If they can find the weapons mentioned in the song, can they win the day? 
+    </p>
+    <p>
+        Or, as the song says, are they doomed to fail? 
+    </p>
+    <p>
+        Indomitus Sum is the conclusion to Indomitus Oriens. Now you can finally learn the fate of those who have no faith, but who instead know the will of their gods.
+    </p>
+    <p>
+        Indomitus Sum is the conclusion of the story we began in Indomitus Oriens, and the fourth book in <i>The Fovean Chronicles.</i>  In it, we learn what the weapons were, what the prophecy meant,
+        and who 'the one who fights as does the sun' is.
+    </p>
+    <p>
+        After this book, we'll have a three book Intermission series, to be released in early 2015.
+    </p>
+    <div class="div">
+        <input type="button" value="Read" id="read" />
+        <input type="button" value="Buy" class="float-right" id="btnEstBook" />
+    </div>
+    <div id="divReadOne" class="divRead">
+        <img src="~/Images/close.jpg" class="close" />
+        @Html.Partial("_Book", Model.partialBooks[0])
+    </div>
+        <div id="divReadTwo" class="divRead">
+        <img src="~/Images/close.jpg" class="close" />
+        @Html.Partial("_Book", Model.partialBooks[1])
+    </div>
+        <div id="divReadThree" class="divRead">
+        <img src="~/Images/close.jpg" class="close" />
+        @Html.Partial("_Book", Model.partialBooks[2])
+    </div>
+</div>

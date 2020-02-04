@@ -1,0 +1,39 @@
+﻿@model SwordsAndSorcery_2020.Models.Email
+@{
+    ViewBag.Title = "The Fifty Reasons Why It's Great to be a Man";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="child">
+    <h2>The Fifty Reasons Why It's Great to be a Man!</h2>
+    <div class="inWhite float-left width60">
+        There are a lot of reasons why it's great to be a man:
+        <ul>
+            <li>You can make a decision whithout someone asking you 'If it's ok?"</li>
+            <li>If you get into a fight, you won't have to listen to some idiot making cat noises</li>
+            <li>The only wings you'll ever care about are on on airplane</li>
+        </ul>
+        And many more!  Personally, I love being a man, and I've put the reasons down in writing so that you can enjoy them to.<br /><br />
+        But why stop there?  I've enlisted the help of <a href="https://www.facebook.com/lacylogan.09" target="_blank">Lacy Logan</a> and <a href="http://www.jgoodphotos.com" target="_blank">JGPhotos</a> to illustrate this book and
+        to make it even <i>more entertaining</i> to you.
+        <br /><br />
+        Want <b>more</b>?  Fine - I'm also including what is perhaps the most guarded secret in all of history: <b><i>The Ten Secrets that No Woman Must Ever Know</i></b>.
+        <br />
+        That's right!  Kept for millennia among a secret few, these are the secrets guarded most closely by men around the world, passed down from Adam and now delivered to you!
+        <br /><br />
+        So how can I make this all <b>even better</b>?  How about by making it <b>FREE!</b>  That's right - because this is information that belongs in every man's hands, and because Lacy is <i>so unimaginably good looking</i>
+        I can't think of any amount that I should charge for this book, so I'm not even going to try.
+        <br /><br />
+        Register below and I'll send you a .pdf version of the book <b><i>right now!</i></b>  We won't resell your email, we won't spam you with 'other amazing offers.'  This is my gift to you.
+    </div>
+
+    <div class="float-right inWhite width40">
+        <img class="fifty" alt="The Fifty Reasons" src="~/Images/Fifty-Cover.png" /><br />
+        This book is available in Kindle and paperback from <a href="http://www.amazon.com/Fifty-Reasons-Why-Its-Great-ebook/dp/B00TE7PNAC/" target="_blank">Amazon.com</a>, or you can get the
+        PDF for free by registering online, below!
+    </div>
+    <div class="float-left partEmail">
+        @Html.Partial("_Email", Model)
+        @ViewBag.Message
+    </div>
+</div>
+

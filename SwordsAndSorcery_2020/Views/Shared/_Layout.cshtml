@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title -The Home of the Fovean Chronicles - an epic fantasy e-book series in the old school traditions of swords and sorcery, wizard and warriors</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="Description" content="This is the story of a man from our world, a Navy Nuclear Propulsion Technician, who finds himself in a fantasy world where magic is real and warlords rule by the sword." />
+        <meta name="keywords" content="fantasy, reality, swords, sorcery, swords and sorcery, swords and sandals, magic, wizards, warriors, horses, faith, christian, history, historic, historic fantasy, epic, epic fantasy" />
+
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render(ViewBag.Css)
+        @Scripts.Render("~/Scripts/jquery-3.4.1.js")
+        @Scripts.Render("~/Scripts/jquery-ui-1.12.1.js")
+        @Styles.Render("~/Scripts/jquery-ui-1.12.1.css")
+        
+        @Scripts.Render("~/Scripts/modernizr-2.6.2.js")
+      
+        <script type="text/javascript">
+            $(document).ready(function () {
+                BodyHeight();
+                $(window).resize(function () {
+                    BodyHeight();
+                });
+                $('#facebook').click(function () {
+                    window.open('https://www.facebook.com/pages/The-Fovean-Chronicles/114797601937754');
+                });
+                $('#rss').click(function () {
+                    window.open('http://www.swordsandsorcery.net/rss.xml');
+                });
+            });
+            function BodyHeight() {
+                var ht = parseInt(GetHeight()) - 250;
+                $('#body').css('min-height', ht + 'px');
+            }
+            function GetHeight() {
+                var xheight = null;
+                if (window.screen != null)
+                    xheight = window.screen.availHeight;
+
+                if (window.innerWidth != null)
+                    xheight = window.innerHeight;
+
+                return xheight;
+
+            }
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            @Html.Partial("_header", new SwordsAndSorcery_2020.Models.HeaderModel())
+
+        </div>
+        <div class="float-right clear">
+            <nav>
+                <ul id="menu">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Author", "About", "Home")</li>
+                    <li>@Html.ActionLink("Fovea", "Fovea", "Home")</li>
+                    <li>@Html.ActionLink("News", "News", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Forum", "Index", "Blog")</li>
+                    <li>@Html.ActionLink("Other Books", "Index", "Other")</li>
+
+                </ul>
+            </nav>
+        </div>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year by Robert W. Brady, Jr.  Make no illegal copies of the content of this site.</p>
+                </div>
+                <div class="float-right">
+                    <img alt="facebook" id="facebook" src="~/Images/IconFacebook.jpg" /><img alt="rss" id="rss" src="~/Images/IconRss.png" />
+                </div>
+            </div>
+        </footer>
+
+       
+    </body>
+</html>

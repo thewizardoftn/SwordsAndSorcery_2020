@@ -1,0 +1,108 @@
+﻿@model SwordsAndSorcery_2020.Models.BookModel
+@{
+    ViewBag.Title = "Indomitus Est";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <script type="text/javascript">
+        var ht = parseInt(GetHeight()) - 250;
+        var beenPressed = 0;
+
+        $(document).ready(function () {
+            $('#divReadOne').hide();
+            $('#divReadTwo').hide();
+            $('#divReadThree').hide();
+            $('#read').click(function () {
+                $('#divReadOne').animate({'width': 40 + '%', 'height': ht + 'px', 'top': 100 + 'px', 'margin': 'auto' }, 500)
+                    .show();
+            });
+            $('#btnEstBook').click(function () {
+                window.open('http://www.amazon.com/Indomitus-Est-Fovean-Chronicles-Book-ebook/dp/B00K5Q8DSA/');
+            });
+            $('.close').click(function () {
+                $(this).parent().hide();
+            });
+            
+
+        });
+        function Next(direction) {
+            if (direction == 'left') {
+                beenPressed = beenPressed - 1;
+                switch (beenPressed) {
+                    case -1:
+                        alert('There is nothing before the prologue');
+                        beenPressed += 1;
+                        break;
+                    case 0:
+                        $('#divReadOne').show();
+                        $('#divReadTwo').hide();
+                        break;
+                    case 1:
+                        $('#divReadTwo').show();
+                        $('#divReadThree').hide();
+                        break;
+                }
+            }
+            else {
+                switch (beenPressed) {
+                    case 0:
+                        $('#divReadOne').hide();
+                        $('#divReadTwo').animate({ 'width': 40 + '%', 'height': ht + 'px', 'top': 100 + 'px', 'margin': 'auto' }, 500)
+                       .show();
+                        beenPressed += 1;
+                        break;
+                    case 1:
+                        $('#divReadTwo').hide();
+                        $('#divReadThree').animate({ 'width': 40 + '%', 'height': ht + 'px', 'top': 100 + 'px', 'margin': 'auto' }, 500)
+                       .show();
+                        beenPressed += 1;
+                        break;
+                    case 2:
+                        alert('There are no more previews - why not buy the book?')
+                        break;
+                }
+            }
+        }
+    </script>
+<div class="book">
+    <img src="~/Images/IndomitusEst.jpg" class="logo" />
+    <p>
+    Imagine yourself, born into the suburbs, your parents working class people, your school nothing special.
+    </p>
+    <p>
+    Imagine that, for some reason far beyond your understanding as a very young child, a god that you didn't even know existed ear-marked you as his bargaining chip in a trade across realities.
+    </p>
+    <p>
+        Imagine that, from the time of that first first meeting and for your next eighteen years, that god - Anubis - threw everything he could think of at you, to break you, to torment you, to forge you into this thing to be traded.
+    </p>
+    <p>
+        And imagine that, at the end of it all, you passed all of the tests, leaving your life in a shambles, never knowing that you were being tested at all and, when the time came, Anubis appeared and tricked you into giving up your soul to him, only to make the trade and give you over to another god, named War, who by comparison made Anubis seem like a pretty nice guy.
+    </p>
+    <p>
+        I'm Randy Morden - welcome to my world. A world named 'Fovea,' where magic is real, technology the stuff of fantasy, and warriors with swords ride horses into battle, trying to stay one step ahead of their gods' will. I didn't ask for this life, but I promise you: before anyone ever knocks me down again, I'm going to have their blood on my knuckles, because a man can only be pushed so far!
+    </p>
+    <br />
+    <p>
+        Indomitus Est is the first book in the <i>Fovean Chronicles</i>, the story of a man from our world, brought into another where magic is real and has supplanted technology.  Randy 
+        is a man who can speak to his god, who has proof instead of faith.  As the instrument of the god War, he lives in a world of absolutes and almost without law, except for the rules made
+        at the edge of a warrior's sword.
+    </p>
+    <p>
+        This book is the first half of a pair, and concludes in Indomitus Vivat.
+    </p>
+    <div class="div">
+        <input type="button" value="Read" id="read" />
+        <input type="button" value="Buy" class="float-right" id="btnEstBook" />
+    </div>
+    <div id="divReadOne" class="divRead">
+        <img src="~/Images/close.jpg" class="close" />
+        @Html.Partial("_Book", Model.partialBooks[0])
+    </div>
+        <div id="divReadTwo" class="divRead">
+        <img src="~/Images/close.jpg" class="close" />
+        @Html.Partial("_Book", Model.partialBooks[1])
+    </div>
+        <div id="divReadThree" class="divRead">
+        <img src="~/Images/close.jpg" class="close" />
+        @Html.Partial("_Book", Model.partialBooks[2])
+    </div>
+</div>

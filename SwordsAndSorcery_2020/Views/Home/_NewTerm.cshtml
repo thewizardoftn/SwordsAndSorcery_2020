@@ -1,0 +1,45 @@
+﻿@model SwordsAndSorcery_2020.Models.FoveaModel
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var one = parseInt(Math.random() * 100);
+        var two = parseInt(Math.random() * 100);
+        
+        $('#Value1').val(one);
+        $('#Value2').val(two);
+
+        $('#btnSubmit').click(function () {
+            if ($('#Description').val().length == 0) {
+                alert('You must include text in your message!');
+                return false;
+            }
+            else if ($('#Description').val().indexOf('<') > -1) {
+                alert('You may NOT send html in your message');
+                return false;
+            }
+        });
+    });
+</script>
+
+@using (Html.BeginForm("NewTerm", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary()
+    <label>Add a Term We Missed</label>
+    <ol>
+        <li>Person Or Place: @Html.TextBoxFor(m=> m.Subject) </li>
+        <li>Description: 
+            <ul>
+                <li> @Html.TextAreaFor(m=> m.Description) </li>
+            </ul>
+        </li>
+        <li>
+            @Html.TextBoxFor(m => m.Value1, new { @class = "smallTextBox" }) + @Html.TextBoxFor(m=>m.Value2, new { @class = "smallTextBox" }) =
+            @Html.TextBoxFor(m=>m.Solution, new { @class = "smallTextBox" }) <span class="inRed">Enter the value of the first two boxes</span>
+        </li>
+    </ol>
+    <input type="submit" id="btnSubmit" value="Submit" />
+    if(Model.Message != null)
+    {
+        @Html.Raw(Model.Message);
+    }
+}

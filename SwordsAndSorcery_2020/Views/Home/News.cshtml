@@ -1,0 +1,27 @@
+﻿@model SwordsAndSorcery_2020.Models.News
+
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>This section is the explosive new news that you&#39;re just dying to hear about
+    </h4>
+<div class="child">
+    <div class="newsClass">
+        <ul class="NewsItem">
+            @for(int i = 0; i< Model.NewsList.Count; ++i)
+            {
+                <li class='<%# Container.DataItemIndex % 2 == 0 ? "quote-alternate" : "quote-item" %>'>
+                    <span class="quote-text">
+                        @Html.Label(Model.NewsList[i].NewsDateString)
+                    </span>
+                    <div  class="quote-source" style="border-left: 2px solid Brown; border-right:none; border-top:none; border-bottom: none; box-shadow:none; border-radius:15px; padding-left:3px;">
+                         @Html.Raw(Model.NewsList[i].NewsItem)
+                    </div>
+                    <div class="float-divider"></div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model Chapter_Type
+@using SwordsAndSorcery_2020.ModelTypes
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var chap = 0;
+        $('.navigate').off().on('click', function () {
+
+            window.parent.Next($(this).attr('data-id'));
+
+        });
+    });
+</script>
+@using (Html.BeginForm())
+{
+    <div class="divNav">
+        <img data-id="left" class="navigate" src="~/Images/left-arrow-icon.jpg" />
+        <img data-id="right" class="navigate" src="~/Images/Right-Arrow-icon.jpg" />
+    </div>
+    if (Model != null)
+    {
+        <h2>Chapter: @Model.Title</h2>
+        <div id="content">
+            @Html.Raw(@Model.Chapter)
+        </div>
+    }
+
+};

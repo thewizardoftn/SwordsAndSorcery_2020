@@ -1,0 +1,21 @@
+﻿@model SwordsAndSorcery_2020.Models.Email
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+
+</script>
+
+@using (Html.BeginForm("FiftyReasons", "Other", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <span>Send me a .PDF of this book!</span>
+    @Html.ValidationSummary()
+    <ol>
+        <li>Your Name: @Html.TextBoxFor(m => m.SenderName) </li>
+        <li>Your E-mail: @Html.TextBoxFor(m => m.ToAddress) </li>
+    </ol>
+
+    <input type="submit" id="btnSubmit" value="Submit" />
+}

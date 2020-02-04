@@ -1,0 +1,1314 @@
+﻿html {
+    background-color: #7ac0da;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: white;
+    color: #333;
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    width:1240px;
+    margin:auto;
+}
+.hidden
+{
+    display:none;
+}
+.buttonClass {
+    clear: both;
+    background-color: #d3dce0;
+    border-radius: 15px;
+    border: 1px solid #787878;
+    cursor: pointer;
+    font-size: smaller;
+    padding: 4px;
+    font-weight: bold;
+    margin: 8px;
+    min-width: 65px;
+    box-shadow: 5px 5px 5px #5c7c99;
+}
+#child
+{
+    padding:5px;
+    margin:15px;
+    border-radius:15px;
+    background-color:white;
+}
+    #child textarea
+    {
+        width:300px;
+    }
+
+    #child .div
+    {
+        width: 50%;
+        margin: auto;
+    }
+        #child .div input
+        {
+            display:inline-block;
+        }
+header
+{
+    width:1240px;
+    height:160px;
+    margin:auto;
+    background-color:#d3dce0;
+    border-radius: 0 0 15px 15px;
+}
+    header img
+    {
+        height: 140px;
+        float:left;
+        padding:10px;
+        cursor:pointer;
+    }
+.img2 {
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    cursor: pointer;
+}
+nav
+{
+    margin-top:10px;
+    margin-left:10px;
+}
+.logo
+{
+    float:left;
+    border-radius:15px;
+    margin-right:25px;
+}
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+.clear
+{
+    clear:both;
+}
+.inWhite
+{
+    background-color:white;
+    padding:4px;
+    margin-top:9px;
+    border-radius:10px;
+}
+.inYellow
+{
+    color:#eef718;
+}
+.bigType
+{
+    font-size:large;
+}
+.width60
+{
+    width:600px;
+}
+.width40
+{
+    width:300px;
+}
+.clear-fix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.bold
+{
+    font-weight:bold;
+}
+h1, h2, h3,
+h5, h6 {
+    color: #000;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+    color:white;
+    margin-left:10px;
+}
+
+h5{
+    font-size: 1em;
+    background-color:#76d3f1;
+    cursor:pointer;
+    width:75%;
+}
+    h5 a:link, h5 a:visited, h5 a:active
+    {
+        padding: 0;
+        text-decoration: none;
+    }
+h6 {
+    font-size: 1em;
+}
+.hideText
+{
+    display:none;
+}
+.showText
+{
+    background-color:#76d3f1;
+    display:normal;
+    padding: 5px;
+}
+/* main layout
+----------------------------------------------------------*/
+.content-wrapper {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+.mainImg
+{
+    margin-top:10px;
+    width:750px;
+}
+#body {
+    margin: 0 auto;
+    max-width: 1240px;
+    background-color: #262525;
+    clear: both;
+    padding-bottom: 35px;
+}
+
+footer {
+    margin: 0 auto;
+    width: 1240px;
+    clear: both;
+    background-color: #e2e2e2;
+    font-size: .8em;
+    height: 30px;
+    position:fixed;
+    bottom:0px;
+    padding-bottom:10px;
+}
+    footer img
+    {
+        margin: 2px;
+        cursor:pointer;
+    }
+
+/* login
+----------------------------------------------------------*/
+#login {
+    display: block;
+    font-size: .85em;
+    text-align: right;
+}
+
+    #login a {
+        background-color: white;
+        font-family:Arial;
+        font-weight:bold;
+        border-radius:15px;
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-right: 3px;
+        padding: 10px;
+        text-decoration: none;
+    }
+
+    #login a.username {
+        background: none;
+        margin: 0;
+        padding: 0;
+        text-decoration: underline;
+    }
+
+    #login li {
+        display: inline;
+        list-style: none;
+    }
+/* announce
+----------------------------------------------------------*/
+.announce
+{
+    background-color:yellow;
+    color:red;
+    font-weight:bold;
+    margin-top: 20px;
+    margin-right:20px;
+    height:auto;
+    float: right;
+    width:100px;
+    padding: 5px;
+    border-radius:10px;
+    text-align:center;
+}
+/* menu
+----------------------------------------------------------*/
+ul#menu {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 0 0 5px;
+    padding: 0;
+    text-align: right;
+}
+
+    ul#menu li {
+        background-color:#bb8080;
+        display: inline;
+        list-style: none;
+        padding-left: 15px;
+        padding-right: 15px;
+        color:black;
+        font-weight:bold;
+        border-radius:10px;
+    }
+
+        ul#menu li a {
+            background: none;
+            color: blue;
+            text-decoration: none;
+        }
+
+        ul#menu li a:hover {
+            color: white;
+            text-decoration: none;
+        }
+/***************************MessageBoard***************************/
+.messageBoard
+{
+    background-color:white;
+    overflow:hidden;
+}
+.whiteText
+{
+    color:white;
+    margin-top:5px;
+    padding:5px;
+}
+.floatRight
+{
+    float:right;
+    margin-bottom:10px;
+    width:50%;
+    text-align:right;
+}
+ul#sideMenu
+{
+    background-color:#d3dce0;
+    list-style-type:none;
+    float:left;
+    padding:10px;
+}
+    ul#sideMenu li
+    {
+        display: block;
+        width: 100px;
+        padding: 5px;
+        font-weight:bold;
+        text-align:center;
+        background-color:#5c7c99;
+        margin-bottom:13px;
+    }
+        ul#sideMenu li a
+        {
+            color:white;
+            text-decoration: none;
+            background-color:none;
+        }
+
+/* page elements
+----------------------------------------------------------*/
+
+/* login page */
+.loginForm
+{
+    border-right: solid 2px #c8c8c8;
+    min-width: 40%;
+    background-color:white;
+}
+
+    .loginForm .validation-error {
+        display: block;
+        margin-left: 15px;
+    }
+
+    .loginForm .validation-summary-errors ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    .loginForm .validation-summary-errors li {
+        display: inline;
+        list-style: none;
+        margin: 0;
+    background-color:white;
+    }
+
+    .loginForm input {
+        width: 250px;
+    }
+
+    .loginForm input[type="checkbox"],
+    .loginForm input[type="submit"],
+    .loginForm input[type="button"],
+    .loginForm button {
+        width: auto;
+    }
+
+#socialLoginForm {
+    margin-left: 40px;
+    float: left;
+    width: 40%;
+    display:none;
+    background-color:white;
+}
+
+    #socialLoginForm h2 {
+        margin-bottom:  5px;
+    }
+
+#socialLoginList button {
+    margin-bottom: 12px;
+}
+
+#logoutForm {
+    background-color:white;
+    display: inline;
+}
+
+/* contact */
+.contact h3 {
+    font-size: 1.2em;
+}
+
+.contact p {
+    margin: 5px 0 0 10px;
+}
+
+.contact iframe {
+    border: 1px solid #333;
+    margin: 5px 0 0 10px;
+}
+
+
+
+/* info and errors */
+.message-info {
+    border: 1px solid;
+    clear: both;
+    padding: 10px 20px;
+}
+
+.message-error {
+    clear: both;
+    color: #e80c4d;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+.message-success {
+    color: #7ac0da;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+.error {
+    color: #e80c4d;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #e80c4d;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+/**********************************Fovea******************/
+.MapImage
+{
+	width:50%;
+	float:right;
+    margin-top: 20px;
+}
+.dictionary
+{
+    float:left;
+    width: 45%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+    .dictionary tr td:nth-child(odd)
+    {
+        font-weight:bold;
+    }
+    .dictionary tr td
+    {
+        border-bottom:10px solid transparent;
+        vertical-align:top;
+    }
+/****************News******************************/
+.newsClass
+{
+    clear:both;
+    padding: 0px 5px 5px 5px;
+    width:800px;
+    border-radius:15px;
+    margin:auto;
+    max-height:700px;
+    overflow-y: scroll;
+    background-color:white;
+}
+ul.NewsItem {
+  list-style: none;
+  margin-top:10px;
+}
+
+ul.NewsItem li {
+    margin: 8px 0px 3px 0px;   
+    padding-bottom: 5px;
+    font-family:Arial;  
+    border-radius:15px;
+}
+
+ul.NewsItem .quote-text {
+    font-size: 1.0em;
+    margin: 8px 0px 8px 0px; 
+    float:left;
+    font-weight:bold;
+    width:10%;
+}
+
+ul.NewsItem .quote-source {
+    font-size: 1.2em;
+    margin: 5px 5px 8px 0px;   
+    float:left;
+    width:80%;
+    border-left:1px solid, brown;
+}
+ul.NewsItem .quote-alternate
+{
+	background:tan;
+}
+ul.NewsItem .quote-item
+{
+	background:white;
+}
+/********************Book Section***********************/
+.book
+{
+    padding:10px;
+    background-color: white;
+    font-size:large;
+}
+    .book .logo
+    {
+        float:left;
+        margin:15px;
+        height:200px;
+    }
+    .book .div
+    {
+        width:50%;
+        margin: auto;
+    }
+.divRead
+{
+    position:absolute;
+    background-color:white;
+    overflow:scroll;
+    border:1px solid blue;
+    box-shadow: 10px 10px 5px #5c7c99;
+    border-radius: 0 0 15px 0;
+}
+    .divRead p
+    {
+        margin-top:0px;
+        margin-bottom: 3px;
+    }
+    .divRead .divNav
+    {
+        height: 40px;
+        position: absolute;
+        top: 5px;
+        right: 40px;
+        width:110px;
+    }
+    .divRead .navigate
+    {
+        height:35px;
+        float:left;
+        cursor:pointer;
+    }
+    .divRead .close
+    {
+        position: absolute;
+        top: 5px;
+        right:10px;
+        cursor:pointer;
+    }
+.centerDiv{
+    width:750px;
+    position:absolute;
+    height:150px;
+    font-family:Arial;
+    font-weight:bold;
+    font-size:larger;
+    background-color:white;
+    border: 2px black solid;
+}
+    .centerDiv .indexPic {
+        height: 150px;
+        float: left
+    }
+    .centerDiv .img2{
+        height: 25px;
+        width: 25px;
+        position:absolute;
+        top: 2px;
+        right: 2px;
+        cursor:pointer;
+    }
+    .centerDiv div{
+        float:right;
+        width:600px;
+        vertical-align:top;
+    }
+.center{
+    width:200px;
+    white-space:nowrap;
+    margin-left:auto;
+    margin-right:auto;
+}
+#content
+{
+}
+    #content p
+    {
+        padding: 10px;
+    }
+#externalLogins
+{
+    display:none;
+}
+.whiteDisplay
+{
+    background-color: white;
+    
+}
+.margBottom
+{
+    margin-bottom:10px;
+}
+.storyDisplay
+{
+    background-color:white;
+}
+    .storyDisplay img
+    {
+        display:inline-block;
+        height:180px;
+        cursor:pointer;
+    }
+    .storyDisplay p
+    {
+        display:inline-block;
+        position:absolute;
+        width:650px;
+    }
+.mapShow
+{
+    width:750px;
+    height: 900px;
+}
+/***********************fileUpload******************************/
+.fileUpload
+{
+    width:400px;
+    height:200px;
+    margin:auto;
+    background-color:white;
+   padding:10px;
+}
+    .fileUpload li
+    {
+        list-style-type: none;
+    }
+    .fileUpload input[type="text"]
+    {
+        width:250px;
+        height:20px;
+        background-color:#d3dce0;
+    }
+    .fileUpload input[type="submit"]
+    {
+        float:right;
+    }
+    .fileUpload span
+    {
+        color:red;
+    }
+    .fileUpload textarea
+    {
+        width:250px;
+    }
+/*****************Admin***********************/
+.admin
+{
+    position:absolute;
+    top:260px;
+    margin-left:auto;
+    margin-right:auto;
+    width:1200px;
+    background-color:white;
+    padding-bottom:50px;
+}
+    .admin .subSection
+    {
+        background-color:white;
+        width:95%;
+        margin-left:auto;
+        margin-right:auto;
+        margin-top:5px;
+        height:auto;
+    }
+        .admin .subSection .close
+        {
+            position:absolute;
+            top:5px;
+            right:5px;
+        }
+.datepicker
+{
+    width:100px;
+    margin-left:10px;
+}
+.adminDisp
+{
+    float:left;
+    margin-right:10px;
+}
+    .adminDisp th
+    {
+        text-align:left;
+    }
+    .adminDisp td
+    {
+        padding-right:8px;
+    }
+.adminTerm
+{
+    background-color:#f7d2d2;
+}
+    .adminTerm ol
+    {
+        margin-top:30px;
+    }
+    .adminTerm li
+    {
+        list-style: none;
+    }
+    .adminTerm input[type="submit"]
+    {
+        float:right;
+    }
+    .adminTerm label
+    {
+        font-weight:bold;
+        left:125px;
+        top:1px;
+    }
+.newsSub
+{
+    border:1px black solid;
+    width:49%;
+    float:left;
+}
+    .newsSub TextArea
+    {
+        width:98%;
+        margin:auto;
+        height:100px;
+    }
+    .newsSub input[type="submit"]
+    {
+        float:right;
+    }
+.newsFullSub
+{
+    border:1px black solid;
+    width:99%;
+    float:left;
+}
+    .newsFullSub table td
+    {
+        border:1px black solid;
+        padding: 2px;
+    }
+
+.partEmail
+{
+    background-color:#f4f6bc;
+    border-radius:10px;
+    margin-top:5px;
+    padding:10px;
+}
+    .partEmail ol
+    {
+        nav-index:0;
+    }
+    .partEmail li
+    {
+        list-style: none;
+    }
+    .partEmail input[type="submit"]
+    {
+        float:right;
+    }
+/*****************************Index Page*****************************/
+.indexPic
+{
+    position:absolute;
+    top:0px;
+    left: 0px;
+    z-index: 2000;
+    cursor:pointer;
+}
+.maximize
+{
+    width:100%;
+    min-height:100%;
+}
+#contentIndex
+{
+    position:absolute;
+    font-size:large;
+    border:2px solid black;
+    padding:5px;
+}
+/********************************Fovea Page***************************/
+#childFovea
+{
+    padding:5px;
+    border-radius:15px;
+    background-color:white;
+    position:absolute;
+    width:1200px;
+    margin-bottom:30px;
+}
+    #childFovea textarea
+    {
+        width:300px;
+        margin-right:10px;
+    }
+
+    #childFovea .div
+    {
+        width: 50%;
+        margin: auto;
+        border-radius:10px;
+    }
+        #childFovea .div input
+        {
+            display:inline-block;
+        }
+.FoveaDiv
+{
+    max-height:725px;
+    overflow:scroll;
+}
+.Fovean
+{
+    font-size:large;
+}
+    .Fovean tr:nth-child(even)
+    {
+        background-color:#4f7857;
+        color:white;
+    }
+    .Fovean tr:nth-child(odd)
+    {
+        background-color:#d9de4c;
+        color:black;
+    }
+    .Fovean tr td
+    {
+        vertical-align:top;
+        padding-left:3px;
+    }
+.partTerm
+{
+    position:absolute;
+    top:600px;
+    right: 30px;
+    background-color:#459f33;
+    font-size:larger;
+    padding:10px;
+    border-radius:15px;
+}
+    .partTerm ol
+    {
+        margin-top:30px;
+    }
+    .partTerm li
+    {
+        list-style: none;
+    }
+    .partTerm input[type="submit"]
+    {
+        float:right;
+    }
+    .partTerm label
+    {
+        font-weight:bold;
+        position:absolute;
+        left:125px;
+        top:1px;
+    }
+    .partTerm img{
+        position:absolute;
+        top:5px;
+        right:5px;
+        cursor:pointer;
+    }
+#blast {
+    z-index: 2000;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+}
+.fifty
+{
+    width:100%;
+}
+
+.collapsible
+{
+    border:1px solid #5c7c99;
+    margin-bottom:10px;
+    margin-top:2px;
+    cursor:pointer;
+    max-width:250px;
+}
+
+.collapse {
+        width:15px;
+        background-image: url('../Images/ui-icons_454545_256x240.png');
+        background-repeat: no-repeat;
+        background-position: -36px -17px;
+        display:inline-block;
+        cursor:pointer;
+        display:none;
+    }
+.expand
+{
+    width: 750px;
+    background-image: url('../Images/ui-icons_454545_256x240.png');
+    background-repeat: no-repeat;
+    background-position: -50px -17px;
+    display: inline-block;
+    cursor: pointer;
+}
+.isGreen
+{
+    color:#74b633;
+}
+.isBlue
+{
+    color:#7693f3;
+}
+.narrow
+{
+    width:35px;
+}
+.treeview
+{
+    background-color:white;
+    overflow:hidden;
+}
+    .treeview ul
+    {
+        font: 14px Arial, Sans-Serif;
+        margin: 0px;
+        padding-left:20px;
+        list-style: none;
+    }
+    .treeview > li
+    {
+
+    }
+    .treeview li p
+    {
+        margin-top:-5px;
+        margin-bottom:-5px;
+    }
+        .treeview li span
+        {
+            padding: 4px;
+            background-color:white;
+            font-weight:bold;
+            display: inline-block;
+            text-decoration: none;
+            width: auto;
+        }
+        .treeview li .mBody
+        {
+            list-style-type: none;
+            background-color: white;
+            border: 1px solid white;
+            border-radius:15px;
+            margin-left:20px;
+            padding:5px;
+            display: list-item;
+            background-color: white;
+            color: black;
+            width:600px;
+        }
+        .treeview li textarea
+        {
+            width:98%;
+            height: 50px;
+            border: #d3dce0;
+        }
+        .treeview input[type="button"]
+        {
+            float:right;
+            padding:5px;
+            margin-right:10px;
+            margin-top:2px;
+        }
+.treeTop
+{
+    margin-top:20px;
+    background-color:white;
+}
+.treeTop span
+{
+    margin-left: 10px;
+    font-size:small;
+}
+.postView{
+    background-color:#7ac0da;
+    }
+    .postView ul
+    {
+        font: 14px Arial, Sans-Serif;
+        margin: 0px;
+        padding-left: 20px;
+        list-style: none;
+    }
+    .postView > li > span
+    {
+        font-weight: bold;
+    }
+    .postView li input[type="text"]
+    {
+        width:400px;
+        font-weight:bold;
+    }
+    .postView li textarea
+    {
+        width:90%;
+        height:50px;
+    }
+    .postView li [type="submit"]
+    {
+        float:right;
+        margin-right:20px;
+    }
+.smallTextBox
+{
+    width:30px;
+}
+.inRed
+{
+    color:red;
+}
+.inBold
+{
+    font-weight:bold;
+}
+#contactTable
+{
+    margin-top:50px;
+    margin-right:auto;
+    margin-left:auto;
+    margin-bottom:20px;
+    width:400px;
+    background-color:white;
+    min-height:500px;
+}
+    #contactTable table
+    {
+        width:400px;
+    }
+        #contactTable input[type="submit"]
+        {
+            float:right;
+        }
+/* login
+----------------------------------------------------------*/
+#login {
+    display: block;
+    font-size: .85em;
+    margin: 0 0 10px;
+    text-align: right;
+    margin-top:10px;
+}
+
+    #login a {
+        background-color: #6fc7f3;
+        margin-left: 10px;
+        margin-right: 3px;
+        padding: 10px;
+        text-decoration: none;
+        border-radius:15px;
+    }
+        #login a:hover
+        {
+            color:red;
+            background-color:#d9d140;
+        }
+
+    #login a.username {
+        background: none;
+        margin: 0;
+        padding: 0;
+        text-decoration: underline;
+    }
+
+    #login ul {
+        margin: 0;
+    }
+
+    #login li {
+        display: inline;
+        list-style: none;
+        min-width:150px;
+    }
+/* login page */
+#loginForm {
+    border-right: solid 2px #c8c8c8;
+    float: left;
+    width: 55%;
+}
+
+    #loginForm .validation-error {
+        display: block;
+        margin-left: 15px;
+    }
+
+    #loginForm .validation-summary-errors ol {
+        margin: 0;
+        padding: 0;
+        list-style:none;
+    }
+
+    #loginForm .validation-summary-errors li {
+        display: inline;
+        list-style: none;
+        margin: 0;
+        color:red;
+        font-weight:bold;
+    }
+
+    #loginForm input {
+        width: 250px;
+    }
+    #loginForm input[type="checkbox"]
+    {
+        float:left;
+        width:15px;
+        margin-left:-1px;
+    }
+    #loginForm input[type="submit"],
+    #loginForm input[type="button"],
+    #loginForm button {
+        width: auto;
+        margin-top:20px;
+        margin-left:340px;
+    }
+    #loginForm ol
+    {
+        list-style:none;
+    }
+        #loginForm ol li
+        {
+            list-style:none;
+            font-weight:bold;
+            font-size:large;
+            min-width:150px;
+        }
+        #loginForm ol li ul li
+        {
+            list-style:none;
+            display:inline-block;
+        }
+    #loginForm a {
+        color: red;
+        margin-top:20px;
+        margin-left:-3px;
+        text-decoration: none;
+    }
+    #loginForm a:hover
+        {
+            color:green;
+            background-color:#d9d140;
+        }
+.accessSquare
+{
+    border: double 3px black;
+    margin-left:auto;
+    margin-right:auto;
+    width:600px;
+    background-color:white;
+}
+    .accessSquare ol
+    {
+        list-style:none;
+    }
+        .accessSquare ol li
+        {
+            list-style:none;
+            font-weight:bold;
+            font-size:large;
+            min-width:150px;
+        }
+        .accessSquare ol li ul li
+        {
+            list-style:none;
+            display:inline-block;
+        }
+
+#logoutForm {
+    display: inline;
+}
+
+.dialog_style1 {
+    z-index: 4000;
+    position: absolute;
+    height: 600px;
+    width: 500px;
+}
+    .dialog1 input[type="button"]{
+        float:right;
+    }
+.diaText {
+    width: 370px;
+    height:100px;
+    margin-left: 10px;
+}
+
+/***************************Manage***************************/
+.plainList {
+    list-style: none;
+    padding: 0;
+    margin-left: 5px;
+}
+
+    .plainList ol {
+        padding: 0;
+    }
+
+    .plainList li {
+        padding: 0px;
+        list-style: none;
+    }
+
+    .plainList ul {
+        padding: 0;
+    }
+
+    .plainList ol li ul li {
+        display: inline-block;
+        padding: 5px;
+        overflow: hidden;
+    }
+
+    .plainList .colBump {
+        margin-left: 3px;
+    }
+    .plainListinput[type="submit"] {
+    float: right;
+}
+.plainListDown {
+    list-style: none;
+    padding: 0;
+    margin-left: 0px;
+}
+
+    .plainListDown li {
+        padding: 0px;
+        list-style: none;
+        display: normal;
+    }
+.plainBack{
+    background-color:antiquewhite;
+    
+}
+.bump50{
+    margin-right:150px;
+}
+
+.simpleList {
+    padding: 0;
+}
+
+.simpleList li {
+    padding: 0px;
+    list-style: none;
+}
+
+.simpleList ul {
+    padding: 0;
+}
+
+.simpleList li ul li {
+    display: inline-block;
+    padding: 5px;
+    overflow: hidden;
+}
+#getData{
+    background-color:#d3dce0;
+}

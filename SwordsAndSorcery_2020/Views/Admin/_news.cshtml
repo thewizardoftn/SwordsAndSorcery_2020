@@ -1,0 +1,33 @@
+﻿@model SwordsAndSorcery_2020.Models.AdminModel
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnSubmitNewNews').click(function () {
+            $.ajax({
+                url: '@Url.Action("PostNews", "Admin")',
+                type: "POST",
+                dataType: "json",
+                data: { date: $('#NewsDate').val(), item: $('#NewsItem').val() },
+                success: function (data) {
+                    if (data.d == 'Success!') {
+                        $('#NewsDate').val('');
+                        $('#NewsItem').val('');
+                    }
+                    else
+                        alert(data.d);
+
+                }
+            });
+        });
+
+    });
+</script>
+
+<h2>News</h2>
+<div class="newsSub">
+    <b>New News Items</b>
+    Date:@Html.TextBoxFor(m=>m.NewsDate, new {@class="datepicker"})<br />
+    News Item:<br />
+    @Html.TextAreaFor(m=>m.NewsItem, new {@class="newsText"})<br />
+    <input type="button" value="Submit" id="btnSubmitNewNews" />
+</div>

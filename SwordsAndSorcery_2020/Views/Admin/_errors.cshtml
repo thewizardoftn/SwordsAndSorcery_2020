@@ -1,0 +1,53 @@
+﻿@model SwordsAndSorcery_2020.Models.AdminModel
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+</script>
+<h2>Errors</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Time of Error</th>
+        <th>Page</th>
+        <th>Process</th>
+        <th>Subject</th>
+        <th>Message</th>
+        <th>Stack</th>
+        <th>SQL</th>
+        <th>Corrected</th>
+    </tr>
+    @foreach (var item in Model.Errors)
+    {
+        <tr>
+            <td>
+                @item.ErrorID
+            </td>
+            <td>
+                @item.Time_Of_Error
+            </td>
+            <td>
+                @item.Page
+            </td>
+            <td>
+                @item.Process
+            </td>
+            <td>
+                @item.Err_Subject
+            </td>
+            <td>
+                @item.Err_Message
+            </td>
+            <td>
+                @item.LiteralDesc
+            </td>
+            <td>
+                @item.SQL
+            </td>
+            <td>
+                @item.Corrected
+            </td>
+        </tr>
+    }
+</table>

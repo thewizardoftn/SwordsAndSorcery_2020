@@ -1,0 +1,32 @@
+﻿
+@model SwordsAndSorcery_2020.Models.AdminModel
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.spIP').click(function () {
+            $('#frmMap').attr('src', 'http://addgadgets.com/ipaddress/index.php?ipaddr=' + $(this).attr('data-fld'));
+        });
+    });
+</script>
+<div class="floatLeft">
+    <table class="adminDisp">
+        <tr>
+            <th colspan="5">Top 10 IP's</th>
+        </tr>
+        <tr>
+            <th>IP Address</th>
+        </tr>
+        @foreach (var item in Model.IPS)
+        {
+            <tr>
+                <td>
+                    <span class="spIP" data-fld="@item.IP">@item.IP</span>
+                </td>
+                <td>
+                    @item.Hits
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+    <iframe class="floatLeft mapShow" id="frmMap"></iframe>

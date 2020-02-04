@@ -1,0 +1,58 @@
+﻿@model SwordsAndSorcery_2020.Models.AdminModel
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnDeleteTerm').click(function () {
+            $('#tblFovean tr').each(function (row) {
+                var columns = new Array;
+                columns = $(this).find('td');
+                if (columns.length > 0) {
+                    if ($(columns[3]).find('input:checkbox')) {
+                        var chk = $(columns[3]).find('input:checkbox');
+                        if ($(chk).is(':checked')) {
+                            var txt = $(columns[0]).find('input:text');
+                            if (txt) {
+                                $.ajax({
+                                    url: '@Url.Action("DeleteFovean", "Admin")',
+                                    type: "POST",
+                                    dataType: "json",
+                                    data: { TermID: $(txt).val() },
+                                    success: function (data) {
+                                        $(row).remove();
+
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+    });
+</script>
+
+    <h2> Fovean Terms</h2>
+    <div class="float-left adminTerm" >
+        @Html.Partial("_NewTerm", Model)
+        @ViewBag.Message
+    </div>
+    <div class="float-left" id="updateDiv">
+    @using (Html.BeginForm("PostUpdate", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {    
+        <label class="bold">Terms to Approve</label>
+        <table class="Fovean" id="tblFovean">
+            @for (int i = 0; i < Model.Terms.Count; ++i)
+            {
+                <tr>
+                    <td class="narrow">@Html.TextBoxFor(m=> m.Terms[i].FoveaID)</td>
+                    <td>@Html.TextBoxFor(m=> m.Terms[i].Subject)</td>
+                    <td>@Html.TextAreaFor(m=>m.Terms[i].Description)</td>
+                    <td>@Html.CheckBoxFor(m=>m.Terms[i].Approved)</td>
+                </tr>
+            }
+        </table>
+        <input type="submit" value="Update" id="btnUpdate" class="float-right" />
+        <input type="button" value="Delete" id="btnDeleteTerm" class="float-right" />
+    }
+    </div>

@@ -1,0 +1,26 @@
+﻿@model SwordsAndSorcery_2020.Models.AccessModel
+
+@{
+    ViewBag.Title = "Confirmation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="inWhite">Confirmation</h2>
+@if (@Model != null)
+{
+    if(@Model.ErrorMessage != null)
+    {
+        <div class="errorMessage">
+            @Html.Raw(@Model.ErrorMessage)
+        </div>
+    }
+}
+<div class="accessSquare center">
+   
+    @using(Html.BeginForm(new {ReturnUrl = ViewBag.ReturnUrl}))
+    {
+        <label>Enter your confirmation code here:</label>@Html.TextBoxFor(m=>m.UserToken)<br />
+        <input type="submit" value="Submit" />
+    }
+    @Html.ActionLink("Resend", "Resend");
+</div>

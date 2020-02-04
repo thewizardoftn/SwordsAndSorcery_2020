@@ -1,0 +1,81 @@
+﻿@model SwordsAndSorcery_2020.Models.AccessModel
+
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="inWhite">Manage your profile</h2>
+
+@if (@Model != null)
+{
+    if(@Model.ErrorMessage != null)
+    {
+        <div class="errorMessage">
+            @Html.Raw(@Model.ErrorMessage)
+        </div>
+    }
+}
+ @using(Html.BeginForm(new {ReturnUrl = ViewBag.ReturnUrl}))
+ {
+    @Html.HiddenFor(m=>m.UserID)
+    <div  class="plainList plainBack">
+        <ol>
+            <li>
+                <ul>
+                    <li class="w150">User Name:</li>
+                    <li>
+                        @Html.TextBoxFor(m=>m.UserName)
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li class="w150">Password:</li>
+                    <li>
+                        @Html.PasswordFor(m=>m.UserPassword)
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li class="w150">Repeat Password:</li>
+                    <li>
+                        @Html.PasswordFor(m=>m.UserPassword2)
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li class="w150">First Name:</li>
+                    <li>
+                        @Html.TextBoxFor(m=>m.FirstName)
+                    </li>
+                </ul>
+            </li>
+                <li>
+                <ul>
+                    <li class="w150">Last Name:</li>
+                    <li>
+                        @Html.TextBoxFor(m=>m.LastName)
+                    </li>
+                </ul>
+            </li>
+                <li>
+                <ul>
+                    <li class="w150">Email Address</li>
+                    <li>
+                        @Html.TextBoxFor(m=>m.EMail)
+                    </li>
+                </ul>
+            </li>
+                <li>
+                <ul>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+        </ol>
+        <input type="submit" value="Update" />
+    </div>
+ }

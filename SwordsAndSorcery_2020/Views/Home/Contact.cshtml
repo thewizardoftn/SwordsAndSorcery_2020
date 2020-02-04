@@ -1,0 +1,111 @@
+﻿@model SwordsAndSorcery_2020.Models.FeedbackModel
+
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var one = parseInt(Math.random() * 10);
+        var two = parseInt(Math.random() * 10);
+        $('#getData').hide();
+        $('#btnSubmit').hide();
+        $('#btnSend').attr("disabled", true);
+        $('#Value1').val(one);
+        $('#Value2').val(two);
+        $('#Solution').blur(function () {
+            var one = parseInt($('#Value1').val());
+            var two = parseInt($('#Value2').val());
+            var sol = parseInt($(this).val());
+            if (sol = one + two) {
+                $('#btnSend').attr("disabled", false);
+                $('#getData').dialog({
+                    modal: true,
+                    minWidth: 300,
+                    width: 300,
+                    minHeight: 200,
+                    resize: 'auto',
+                    buttons: {
+                        "Close": function () {
+                            $(this).remove();
+                        },
+                        "Send": function () {
+                            $('#txtMessage').val($('#diaText').val());
+                            if ($('#txtMessage').val().trim().length < 10) {
+                                alert('You must include text in your message!');
+                                return false;
+                            }
+                            else if ($('#txtMessage').val().indexOf('<') > -1) {
+                                alert('You may NOT send html in your message');
+                                return false;
+                            }
+                            else {
+                               $('#btnSubmit').trigger('click');
+                            }
+                        }
+
+                    }
+                }
+                ).draggable().resizable();
+            }
+        });
+
+    });
+</script>
+<div id="child">
+    <h2>I always answer my fan mail!</h2>
+    @Html.ValidationSummary(true)
+    @using (Html.BeginForm())
+    {
+        <div id="contactTable">
+            <table>
+                <tr>
+                    <td>
+                        <span>Name:</span>
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.SenderName, new { id = "txtName", @class = "mediumText", @maxlength = "150" })
+                        <span class="field-validation-valid" asp-validation-for="SenderName"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>E-mail Address:</span>
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.SenderEmail, new { id = "txtEmail", @class = "mediumText", @maxlength = "150" }) <br />
+                        <span class="field-validation-valid" asp-validation-for="SenderEmail"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span class="inBold">I am not a robot or spider:</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(m => m.Value1, new { @class = "smallTextBox" }) + @Html.TextBoxFor(m => m.Value2, new { @class = "smallTextBox" }) =
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Solution, new { @class = "smallTextBox" })
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span class="inRed">Enter the value of the first two boxes and then click the screen'</span>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        @Html.HiddenFor(m => m.Message, new { @id = "txtMessage" })
+        <div id="getData" title="Leave your feedback">
+            <span style="padding-top:20px;">Message:</span><br />
+            <textarea id="diaText" class="diaText"></textarea>
+        </div>
+        <input type="submit" id="btnSubmit" />
+    }
+</div>
+
+

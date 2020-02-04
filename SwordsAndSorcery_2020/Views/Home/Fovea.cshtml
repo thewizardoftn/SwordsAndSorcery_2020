@@ -1,0 +1,51 @@
+﻿@model SwordsAndSorcery_2020.Models.FoveaModel
+
+@{
+    ViewBag.Title = "Fovea";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    var expanded = true;
+    var ht = 0;
+    $(document).ready(function () {
+        $('#btnChange').click(function () {
+            
+            if (expanded == true) {
+                $('#content').hide();
+                ht = $('#divContainer').height();
+                
+                $('#divContainer').css('height', '15px');
+                $(this).attr('src', '../Images/Contract.png');
+                expanded = false;
+            }
+            else {
+                expanded = true;
+                $('#divContainer').css('height', 'auto');
+                $('#content').show();
+                $(this).attr('src', '../Images/Expand.png');
+            }
+        });
+    });
+</script>
+<div id="childFovea">
+    <h2>Know your Foveans:</h2>
+    <img src="/images/Foveamap1.jpg" alt="FoveanMap" class="MapImage" />
+    <div class="FoveaDiv">
+        <table class="Fovean">
+            @foreach (var item in Model.Terms)
+            {
+                <tr>
+                    <td>@item.Subject</td>
+                    <td>@item.Description</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div id="divContainer" class="float-right partTerm" >
+        <img src="~/Images/Contract.png" id="btnChange" />
+        <div id="content">
+            @Html.Partial("_NewTerm", Model)
+            @ViewBag.Message
+        </div>
+    </div>
+</div>

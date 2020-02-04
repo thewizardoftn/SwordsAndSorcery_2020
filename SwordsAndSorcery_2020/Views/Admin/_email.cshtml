@@ -1,0 +1,59 @@
+﻿@model SwordsAndSorcery_2020.Models.AdminModel
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnDelete').click(function () {
+            $('.chkEmails').each(function () {
+                if ($(this).is(':checked')) {
+                    var tr = $(this).parent().parent();
+                    var val = $(this).val();
+                    $.ajax({
+                        url: '@Url.Action("DeleteEmail", "Admin")',
+                        type: "POST",
+                        dataType: "json",
+                        data: { emailID: val },
+                        success: function (data) {
+                            $(tr).remove();
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+<h2>Emails</h2>
+<input type="button" id="btnDelete" value="Delete Selected" />
+<table id="tblEMails">
+    <tr>
+        <th>ID</th>
+        <th></th>
+        <th>Time of Email</th>
+        <th>Sender</th>
+        <th>Subject</th>
+        <th>Message</th>
+    </tr>
+    @foreach (var item in Model.EMails)
+    {
+        <tr>
+            <td>
+                @item.ID
+            </td>
+            <td>
+                <input type="checkbox" value="@item.ID" class="chkEmails" />
+            </td>
+            <td>
+                @item.SentTime
+            </td>
+            <td>
+                @item.Combined 
+            </td>
+            <td>
+                @item.Subject
+            </td>
+            <td>
+                @item.Message
+            </td>
+        </tr>
+    }
+</table>

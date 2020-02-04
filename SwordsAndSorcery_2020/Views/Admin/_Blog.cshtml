@@ -1,0 +1,115 @@
+﻿@model SwordsAndSorcery_2020.Models.AdminModel
+<link href="~/Content/blogStyle.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.chkArchive').click(function () {
+            processCheck('Archive', $(this).attr('data-ID'), $(this).prop('checked'));
+        });
+        $('.chkSticky').click(function () {
+            processCheck('Sticky', $(this).attr('data-ID'), $(this).prop('checked'));
+        });
+        $('.chkBanned').click(function () {
+            processCheck('Banned', $(this).attr('data-ID'), $(this).prop('checked'));
+        });
+    });
+
+
+    function processCheck(func, id, val) {
+        $.ajax({
+            url: '@Url.Action("ProcCheck", "Admin")',
+            type: "POST",
+            dataType: "json",
+            data: { ID: id, Func: func, Value: val },
+            success: function (data) {
+                alert(data);
+
+            }
+        })
+    }
+</script>
+
+@helper ShowSubCats(IEnumerable<SwordsAndSorcery_2020.ModelTypes.BlogType> subItem)
+{
+    foreach (var item in subItem)
+    {
+        <li>
+            <ul class="undernav">
+                <li class="inGreen">@item.Title</li>
+                <li>
+                    <ul>
+                        <li class="inRed floatLeft">Date:</li>
+                        <li class="floatLeft">@item.BlogDate</li>
+                        <li class="inRed floatLeft">
+                            Author:
+                        </li>
+                        <li class="floatLeft">
+                            <i>@item.AuthorName</i>
+                        </li>
+                        <li class="floatLeft">
+                            Replies: @item.SubCategories.Count
+                        </li>
+                        <li class="dispInline">
+                            Archive: <input type="checkbox" class="chkArchive" checked="@item.Archive" data-ID="@item.BlogID" />
+                        </li>
+                        <li class="dispInline">
+                            Sticky: <input type="checkbox" class="chkSticky" checked="@item.Sticky" data-ID="@item.BlogID">
+                        </li>
+                        <li class="dispInline">
+                            Banned: <input type="checkbox" class="chkBanned" checked="@item.Banned" data-ID="@item.BlogID" />
+                        </li>
+                
+                    </ul>
+                </li>
+                <li class="listStyle indent">
+                    @Html.Raw(@item.BlogContent)
+                </li>
+
+                @{
+                    @ShowSubCats(@item.SubCategories);
+                }
+            </ul>
+        </li>
+    }   
+}
+
+<ol class="topnav">
+    @foreach (var item in @Model.BlogFiles)
+    {
+        <li>
+            <ul>
+                <li class="inGreen">@item.Title</li>
+                <li>
+                    <ul>
+                        <li class="inRed floatLeft">Date:</li>
+                        <li class="floatLeft">@item.BlogDate</li>
+                        <li class="inRed floatLeft">
+                            Author:
+                        </li>
+                        <li class="floatLeft">
+                            <i>@item.AuthorName</i>
+                        </li>
+                        <li class="inRed floatLeft">
+                            Replies: @item.SubCategories.Count
+                        </li>
+                        <li class="dispInline">
+                            Archive: <input type="checkbox" class="chkArchive" checked="@item.Archive"  data-ID="@item.BlogID" />
+                        </li>
+                        <li class="dispInline">
+                            Sticky: <input type="checkbox" class="chkSticky" checked="@item.Sticky" data-ID="@item.BlogID" />
+                        </li>
+                        <li class="dispInline">
+                            Banned: <input type="checkbox" class="chkBanned" checked="@item.Banned" data-ID="@item.BlogID" />
+                        </li>
+                    </ul>
+                </li>
+                <li class="indent">
+                    @Html.Raw(@item.BlogContent)
+                </li>
+                @{
+                    @ShowSubCats(@item.SubCategories);
+                }
+            </ul>
+        </li>
+    }
+</ol>

@@ -1,0 +1,252 @@
+﻿@model SwordsAndSorcery_2020.Models.BlogModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/blogStyle.css" rel="stylesheet" />
+<h2 class="inWhite">Welcome to the Blog</h2>
+<script type="text/javascript">
+    var hideReplies = false;
+    $(document).ready(function () {
+        $('#blogReply').hide();
+        $('.datepicker').datepicker();
+        $('.datepicker').datepicker('setDate', new Date());
+        $('#btnMinimizeIssues').hide();
+        $('#content').hide();
+        $('#btnClose').click(function () {
+            //var div = document.getElementById('xxxxTextDiv');
+            //var bdy = document.getElementById('body');
+            //bdy.removeChild(div);
+            $('#blogReply').hide();
+           
+        });
+        $('#content').keypress(function (e) {
+            if (e.which == 13) {
+                return false;
+            }
+        });
+        var bodyHeight = $('#body').height();
+        $('#child').css({ height: bodyHeight, marginLeft: -8 + 'px' });
+
+        $('#btnOpenIssues').click(function () {
+            $('.addRecord').animate({ height: 490 + 'px', width: 300 + 'px', backgroundColor: '#f8f3b7', zIndex:2000 }, 500);
+            $('#content').show();
+            $('#btnMinimizeIssues').show();
+        });
+        $('#btnMinimizeIssues').click(function () {
+            $('.addRecord').animate({ right: 10 + 'px', height: 30 + 'px', width: 30 + 'px', backgroundColor: 'transparent' }, 500);
+            $('#content').hide();
+            $('#btnMinimizeIssues').hide();
+        });
+        $(".clickMe").click(function () { //When trigger is clicked...
+            //Following events are applied to the subnav itself (moving subnav up and down)
+            $(this).parent().parent().find("ul.subnav").toggle('fast').show(); //Drop down the subnav on click
+            if (hideReplies == false)
+                $(this).attr('src', '/Images/HideReplies.png');
+            else
+                $(this).attr('src', '/Images/ShowReplies.png');
+
+            hideReplies = !hideReplies;
+        });
+        $('.replyClass').click(function () {
+            var offset = $(this).offset();
+            //var div = document.createElement('div');
+            //div.className = 'smokeScreen';
+            //div.id = 'xxxxTextDiv';
+            //var bdy = document.getElementById('body');
+            //$(div).css('height', $(document).height());
+            var id = $(this).attr('data-ID');
+            var title = $(this).attr('data-Title');
+            //fart
+            var author = $('#_currentUser')[0].innerText;
+            if (author == '')
+                author = '@ViewBag.UserName';
+            
+
+            $('#_BlogID').text(id);
+            $('#_Author').text($('#_currentUser').attr('data-id'));
+            $('#_AuthorName').text(author);
+            $('#spAuthorName').html(author);
+            $('#_Title').val(title);
+            //bdy.appendChild(div);
+            var wit = $(document).width() / 2;
+          
+            $('#blogReply')
+                .show()
+               .animate({ top: offset.top - 100 + 'px', left: wit + 'px' }, 0);
+
+        });
+        $('#submitButton').click(function () {
+            var blogContent = $('#_BlogContent').val();
+            var title = $('#_Title').val();
+            if (blogContent.length < 10) {
+                alert('You must enter a response that is at least 10 characters long!');
+                return false;
+            }
+            if (title.length < 10) {
+                alert('You must enter a title that is at least 10 characters long!');
+                return false;
+            }
+
+            $.ajax({
+                url: '@Url.Action("SubmitPost", "Blog")',
+                type: "POST",
+                dataType: "json",
+                data: { BlogID: $('#_BlogID').text(), Author: $('#_Author').text(), AuthorName: $('#_AuthorName').text(), Title: $('#_Title').val(), Content: $('#_BlogContent').html() },
+                success: function (data) {
+                    if (data.toString() == 'true') {
+                        window.location = '/Blog';
+                    }
+                    
+                }
+             })
+        });
+    });
+    function divHide() {
+
+    }
+</script>
+@helper ShowSubCats(IEnumerable<SwordsAndSorcery_2020.ModelTypes.BlogType> subItem)
+{
+    foreach (var item in subItem)
+    {
+        <li class="indentPlain">
+            <ul class="subnav">
+                <li class="inGreen">@item.Title</li>
+                <li>
+                    <ul>
+                        <li class="inRed floatLeft">Date:</li>
+                        <li class="floatLeft">@item.BlogDate</li>
+                        <li class="inRed floatLeft">
+                            Author:
+                        </li>
+                        <li class="floatLeft">
+                            <i>@item.AuthorName</i>
+                        </li>
+                        <li>
+                            Replies: @item.SubCategories.Count
+                        </li>
+                    </ul>
+                </li>
+                <li class="listStyle indent">
+                    @Html.Raw(@item.BlogContent)
+                </li>
+                <li class="listStyle">
+                    <input type="button" class="buttonClass replyClass" value="reply" data-ID ="@item.BlogID" data-Title="@item.Title" />
+                    @if(@item.SubCategories.Count >0)
+                    {
+                        <img class="clickMe" alt="Show" src="~/Images/ShowReplies.png" />
+                    }
+                </li>
+                @{
+                    @ShowSubCats(@item.SubCategories);
+                }
+            </ul>
+        </li>
+    }   
+}
+@if(Model.Rights >2)
+{
+    <div class="addRecord elevate">
+        <img id="btnOpenIssues" src="~/Images/open.png" alt="Open" class="elevate" />
+        <img id="btnMinimizeIssues" src="~/Images/minimize.png" alt="minimize" class="space" /><br />
+        <div id="content">
+            @using (Html.BeginForm("StartIssue", "Blog"))
+            {
+                <h2>New Category</h2>@Html.HiddenFor(m=>m.UserID)
+                @Html.TextBoxFor(m => m.UserID, new { @class = "hidden" })
+                <span>Create On Date:</span> @Html.TextBoxFor(m => m.BlogDate, new { @class = "datepicker" })<br />
+                <span>Created By:</span> @Html.TextBoxFor(m=>m.AuthorName)
+                <br />
+                <span>Issue:</span> @Html.TextBoxFor(m => m.Title, new { @class = "w250" })<br />
+                <hr />
+                @Html.TextAreaFor(m=>m.BlogContent)
+                <br />
+                <input type="submit" id="btnNewIssue" value="Submit" />
+            }
+        </div>
+    </div>
+}
+<div id="child" >
+    <ol class="topnav">
+        @foreach (var item in @Model.TheBlog)
+        {
+            <li>
+                <ul>
+                    <li class="inGreen">@item.Title</li>
+                    <li>
+                        <ul>
+                            <li class="inRed floatLeft">Date:</li>
+                            <li class="floatLeft">@item.BlogDate</li>
+                            <li class="inRed floatLeft">
+                                Author:
+                            </li>
+                            <li class="floatLeft">
+                                <i>@item.AuthorName</i>
+                            </li>
+                            <li class="inRed">
+                                Replies: @item.SubCategories.Count
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="indent">
+                        @Html.Raw(@item.BlogContent)
+                    </li>
+                    <li class="listStyle">
+                        @if(ViewBag.UserID >0)
+                        {
+                            <input type="button" class="buttonClass replyClass" value="reply" data-ID ="@item.BlogID" data-Title ="@item.Title" />
+                        }
+                        else{
+                            @Html.ActionLink("Login to reply", "../Access/Login")   
+                        }
+                    @if(@item.SubCategories.Count >0)
+                    {
+                        <img class="clickMe" alt="Show" src="~/Images/ShowReplies.png" />
+                    }
+                    </li>
+                    @{
+                        @ShowSubCats(@item.SubCategories);
+                    }
+                </ul>
+            </li>
+        }
+    </ol>
+</div>
+<div id="blogReply">
+    <img src="~/Images/Close.png" class="closeButton" id="btnClose" />
+
+    <input type="text" id="_BlogID" class="hidden" />
+    <input type="text" id="_Author" class="hidden" />
+    <input type="text" id="_AuthorName" class="hidden" />
+    <ol>
+        <li class="listStyle">
+            <ul>
+                <li class="inGreen floatLeft">
+                    Title:
+                </li>
+                <li><input type="text" id="_Title" class = "titleBox" /></li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li class="inRed disInline">Date:</li>
+                <li class="disInline">@DateTime.Now</li>
+                <li class="inRed disInline">
+                    Author:
+                </li>
+                <li class="disInline">
+                    <i><span id="spAuthorName"></span></i>
+                </li>
+            </ul>
+        </li>
+        <li class="indentPlain listStyle">
+            Comments:<br />
+            <TextArea id="_BlogContent"></TextArea>
+        </li>
+        <li class="listStyle">
+            <input type="button" id="submitButton" value="Submit" class="buttonClass floatRight" /> 
+        </li>
+    </ol>
+</div>
+

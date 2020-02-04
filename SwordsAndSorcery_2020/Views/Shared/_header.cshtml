@@ -1,0 +1,14 @@
+﻿@model SwordsAndSorcery_2020.Models.HeaderModel
+
+<div class="content-wrapper">
+        <div>
+            <a class="logo" href="~/Home"><img src="~/Images/SSLogo.gif" /></a>
+        </div>
+    </div>
+    <img class="floatLeft mainImg" src="~/Images/FoveanChronicles.png" alt="The Fovean Chronicles" />
+            
+<div class="float-right">
+    <section id="login">
+        @Html.Partial("_LoginPartial", @Model.User)
+    </section>
+</div>

@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "Semper Indomitus: The Amazing Conclusion to the Fovean Chronicles!";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model SwordsAndSorcery_2020.Models.BookModel
+
+<script type="text/javascript">
+        var ht = parseInt(GetHeight()) - 250;
+        var beenPressed = 0;
+
+        $(document).ready(function () {
+            $('#divReadOne').hide();
+            $('#divReadTwo').hide();
+            $('#divReadThree').hide();
+            $('#read').click(function () {
+                $('#divReadOne').animate({'width': 40 + '%', 'height': ht + 'px', 'top': 100 + 'px', 'margin': 'auto' }, 500)
+                    .show();
+            });
+            $('#btnEstBook').click(function () {
+                window.open('https://www.amazon.com/Semper-Indomitus-Book-Fovean-Chronicles-ebook/dp/B07MN35HLP');
+            });
+            $('.close').click(function () {
+                $(this).parent().hide();
+            });
+
+
+        });
+        function Next(direction) {
+            if (direction == 'left') {
+                beenPressed = beenPressed - 1;
+                switch (beenPressed) {
+                    case -1:
+                        alert('There is nothing before the prologue');
+                        beenPressed += 1;
+                        break;
+                    case 0:
+                        $('#divReadOne').show();
+                        $('#divReadTwo').hide();
+                        break;
+                    case 1:
+                        $('#divReadTwo').show();
+                        $('#divReadThree').hide();
+                        break;
+                }
+            }
+            else {
+                switch (beenPressed) {
+                    case 0:
+                        $('#divReadOne').hide();
+                        $('#divReadTwo').animate({ 'width': 40 + '%', 'height': ht + 'px', 'top': 100 + 'px', 'margin': 'auto' }, 500)
+                       .show();
+                        beenPressed += 1;
+                        break;
+                    case 1:
+                        $('#divReadTwo').hide();
+                        $('#divReadThree').animate({ 'width': 40 + '%', 'height': ht + 'px', 'top': 100 + 'px', 'margin': 'auto' }, 500)
+                       .show();
+                        beenPressed += 1;
+                        break;
+                    case 2:
+                        alert('There are no more previews - why not buy the book?')
+                        break;
+                }
+            }
+        }
+</script>
+<div class="book">
+    <img src="~/Images/Semper.png" class="logo" />
+    <p>
+        Randy Morden was tricked by the dying god, Anubis, into converting to the Death God's religion. The first thing Anubis did was to trade him to another god, War, in a land called Fovea, where magic is real and men ride horses into war, and justice is often at the point of a sword.
+    </p>
+    <p>
+        The god War instructed him, "Lead a successful life," and Randy made of himself a Duke, in the nation of Eldador, and he turned Eldador into the economic powerhouse of the known world. But that wasn't enough.
+    </p>
+    <p>
+        So Randy made himself a King, and Eldador into an Empire, and that empire into the juggernaut that ruled land and sea - but that wasn't enough. Not for the hungry god, War.
+    </p>
+    <p>
+        Other gods brought other champions to Fovea from Earth - an older man, a young girl, and they, too, became powerful. A prophesy was sung, telling of an impending war, of a fight to late to win, of weapons against the One.
+    </p>
+    <p>
+        We took an Intermission, and we learned of the Randy's children, how powerful they'd become, of the adventures they had.
+    </p>
+    <p>
+        Now, in the final story, we learn it all. Who is this mysterious Druid and what is his secret? What is the power of Latin here?
+    </p>
+    <p>
+        Most importantly, what is Randy's 'success,' and what is its terrible price?
+    </p>
+    <p>
+        Set yourself aside a block of time, because you're not going to want to put down Semper Indomitus, and you'll NEVER believe how this adventure ends!
+    </p>
+    <div class="div">
+        <input type="button" value="Read" id="read" />
+        <input type="button" value="Buy" class="float-right" id="btnEstBook" />
+    </div>
+    <div id="divReadOne" class="divRead">
+        <img src="~/Images/close.jpg" class="close" />
+        @Html.Partial("_Book", Model.partialBooks[0])
+    </div>
+    <div id="divReadTwo" class="divRead">
+        <img src="~/Images/close.jpg" class="close" />
+        @Html.Partial("_Book", Model.partialBooks[1])
+    </div>
+    <div id="divReadThree" class="divRead">
+        <img src="~/Images/close.jpg" class="close" />
+        @Html.Partial("_Book", Model.partialBooks[2])
+    </div>
+</div>

@@ -1,0 +1,84 @@
+﻿@model SwordsAndSorcery_2020.Models.AccessModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ('@Model.GoHome' == 'True')
+            window.location = '/';
+        var ht = $('#loginForm').css('height').replace('px', '');
+        $('#divRight').css({ 'height': ht + 'px' });
+    });
+</script>
+
+<h2 class="inWhite">Login</h2>
+@if (@Model != null)
+{
+    if(@Model.ErrorMessage != null)
+    {
+        <div class="errorMessage">
+            @Html.Raw(@Model.ErrorMessage)
+        </div>
+    }
+}
+<div id="loginForm" class="loginForm floatLeft">
+    @using(Html.BeginForm(new {ReturnUrl = ViewBag.ReturnUrl}))
+    {
+        @Html.HiddenFor(m => m.EMail);
+        @Html.ValidationSummary(true)
+        <ol>
+            <li>
+                <ul>
+                    <li>
+                        Login:
+                    </li>
+                    <li>
+
+                        @Html.TextBoxFor(m=>m.UserName)
+                    </li>
+                    <li>
+                        @Html.ValidationMessageFor(m=>m.UserName)
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>
+                        Password:
+                    </li>
+                    <li>
+                        @Html.PasswordFor(m=>m.UserPassword)
+                    </li>
+                    <li>
+                        @Html.ValidationMessageFor(m=>m.UserPassword)
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>
+                        Remember Me:
+                    </li>
+                    <li>
+                        @Html.CheckBoxFor(m=>m.RememberMe)
+                    </li>
+                    <li>
+                        You will be logged in automatically when you return
+                    </li>
+                </ul>
+            </li>
+            <li>
+                @Html.ActionLink("Register", "Register") If you don't have an account
+            </li>
+        </ol>
+        <p>
+            <input type="submit" value="Log in" />
+        </p>
+    }
+</div>
+<div id="divRight" class="floatRight loginForm center">
+    @Html.ActionLink("Forgot Your Password", "ForgotPassword", new { UserID = @ViewBag.UserID }, new { @class = "bump50" })
+</div>

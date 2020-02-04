@@ -1,0 +1,98 @@
+﻿@model SwordsAndSorcery_2020.Models.AdminModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.datepicker').datepicker();
+        Reset();
+        $('#spPages').click(function () {
+            Reset();
+            $('#pages').show();
+        });
+        $('#spIPs').click(function () {
+            Reset();
+            $('#ips').show();
+        });
+        $('#spNews').click(function () {
+            Reset();
+            $('#news').show();
+        });
+        $('#spFovea').click(function () {
+            Reset();
+            $('#fovea').show();
+        });
+        $('#spEmail').click(function () {
+            Reset();
+            $('#email').show();
+        });
+        $('#spBlog').click(function () {
+            Reset();
+            $('#blog').show();
+        });
+        $('#spErrors').click(function () {
+            Reset();
+            $('#errors').show();
+        });
+    });
+
+    function Reset() {
+        $('#pages').hide();
+        $('#news').hide();
+        $('#fovea').hide();
+        $('#email').hide();
+        $('#errors').hide();
+        $('#ips').hide();
+        $('#blog').hide();
+    }
+</script>
+<h2 class="inWhite">Control Panel</h2>
+    <ul id="menu">
+        <li>
+            <span id="spPages">Pages</span>
+        </li>
+        <li>
+            <span id="spIPs">IPs</span>
+        </li>
+        <li>
+            <span id="spNews">News</span>
+        </li>
+        <li>
+            <span id="spFovea">Fovean Terms</span>
+        </li>        
+        <li>
+            <span id="spEmail">Email</span>
+        </li>
+        <li>
+            <span id="spBlog">Blog</span>
+        </li>     
+        <li>
+            <span id="spErrors">Errors</span>
+        </li>
+    </ul>
+<div class="admin">
+    <div class="subSection" id="pages">
+        @Html.Partial("_pages", Model)
+    </div>
+    <div class="subSection" id="ips">
+        @Html.Partial("_IPLookUp", Model)
+    </div>
+    <div class="subSection" id="news">
+        @Html.Partial("_news", Model)
+    </div>
+
+    <div class="subSection" id="fovea">
+        @Html.Partial("_fovea", Model)
+    </div>
+    <div class="subSection" id="blog">
+        @Html.Partial("_Blog", Model)
+    </div>
+    <div class="subSection" id="email">
+        @Html.Partial("_email", Model)
+    </div>
+    <div class="subSection" id="errors">
+        @Html.Partial("_errors", Model)
+    </div>
+</div>

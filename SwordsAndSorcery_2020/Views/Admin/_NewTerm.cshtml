@@ -1,0 +1,27 @@
+﻿@model SwordsAndSorcery_2020.Models.AdminModel
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnSubmit').click(function () {
+            alert('this happened');
+            $('#Subject').val('');
+            $('#Description').val('');
+        });
+        
+    });
+</script>
+<div id ="divLoad">
+    @using (Html.BeginForm("NewTerm", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary()
+        <label>Add a Term We Missed</label>
+        <ol>
+            <li>Person Or Place: @Html.TextBoxFor(m=> m.Subject) </li>
+            <li>Description: 
+                <ul>
+                    <li> @Html.TextAreaFor(m=> m.Description) </li>
+                </ul>
+            </li>
+        </ol>
+        <input type="submit" id="btnSubmit" value="Submit" />
+    }
+</div>

@@ -1,0 +1,103 @@
+﻿@model SwordsAndSorcery_2020.Models.BookModel
+@{
+    ViewBag.Title = "Indomitus_Oriens";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <script type="text/javascript">
+        var ht = parseInt(GetHeight()) - 250;
+        var beenPressed = 0;
+
+        $(document).ready(function () {
+            $('#divReadOne').hide();
+            $('#divReadTwo').hide();
+            $('#divReadThree').hide();
+            $('#read').click(function () {
+                $('#divReadOne').animate({ 'width': 40 + '%', 'height': ht + 'px', 'top': 100 + 'px', 'margin': 'auto' }, 500)
+                    .show();
+            });
+            $('#btnEstBook').click(function () {
+                window.open('http://www.amazon.com/Indomitus-Oriens-Fovean-Chronicles-Book-ebook/dp/B00K60M0QG/');
+            });
+            $('.close').click(function () {
+                $(this).parent().hide();
+            });
+
+        });
+        function Next(direction) {
+            if (direction == 'left') {
+                beenPressed = beenPressed - 1;
+                switch (beenPressed) {
+                    case -1:
+                        alert('There is nothing before the prologue');
+                        beenPressed += 1;
+                        break;
+                    case 0:
+                        $('#divReadOne').show();
+                        $('#divReadTwo').hide();
+                        break;
+                    case 1:
+                        $('#divReadTwo').show();
+                        $('#divReadThree').hide();
+                        break;
+                }
+            }
+            else {
+                switch (beenPressed) {
+                    case 0:
+                        $('#divReadOne').hide();
+                        $('#divReadTwo').animate({ 'width': 40 + '%', 'height': ht + 'px', 'top': 100 + 'px', 'margin': 'auto' }, 500)
+                       .show();
+                        beenPressed += 1;
+                        break;
+                    case 1:
+                        $('#divReadTwo').hide();
+                        $('#divReadThree').animate({ 'width': 40 + '%', 'height': ht + 'px', 'top': 100 + 'px', 'margin': 'auto' }, 500)
+                       .show();
+                        beenPressed += 1;
+                        break;
+                    case 2:
+                        alert('There are no more previews - why not buy the book?')
+                        break;
+                }
+            }
+        }
+    </script>
+<div class="book">
+    <img src="~/Images/OriensCover.png" class="logo"/>
+    <p>
+        To say that Randy Morden had an effect on Fovea is an understatement. More than ten years after his arrival, the Fovean High Council is in a shambles, the supremacy of the Uman-Chi is a memory, and Eldador is an Empire, not a kingdom.
+    </p>
+    <p>
+        An Uman-Chi girl finds herself with a song to sing, a song which is a gift from the goddess Eveave. When she sings it, another call will come to Earth, a new call for two new champions, a young girl and an old man, for the world where magic is used like technology, and technology is just starting to appear.
+    </p>
+    <p>
+        Now War is about to rage across Fovea, and the greedy Eldadorian government is at the center of it. These two champions from Earth have a decision to make - one not so easy as they might think:
+    </p>
+    <p>
+        Which side are they on?
+    </p>
+    <p>
+        Travel with Bill and Melissa in the footsteps of the Conqueror and the shadow of the Wolf, and ask yourself: how do you fight the invincible warrior, especially considering that your failure is already foretold?
+    </p>
+    <br />
+    <p>
+        Indomitus Oriens takes a new look at the <i>Fovean Chronicles</i>, this time from the eyes of everyone <b>but</b> Randy.  You'll see how Shela feels about her gift of the red dress, and being
+        called <i>The Bitch of Eldador</i>, what Tartan Stowe thinks about being a Duke and not a King, and more.  Like Indomitus Est, this book is the first of a pair, and concludes with <i>Indomitus Sum</i>
+    </p>
+   <div class="div">
+        <input type="button" value="Read" id="read" />
+        <input type="button" value="Buy" class="float-right" id="btnEstBook" />
+    </div>
+    <div id="divReadOne" class="divRead">
+        <img src="~/Images/close.jpg" class="close" />
+        @Html.Partial("_Book", Model.partialBooks[0])
+    </div>
+        <div id="divReadTwo" class="divRead">
+        <img src="~/Images/close.jpg" class="close" />
+        @Html.Partial("_Book", Model.partialBooks[1])
+    </div>
+        <div id="divReadThree" class="divRead">
+        <img src="~/Images/close.jpg" class="close" />
+        @Html.Partial("_Book", Model.partialBooks[2])
+    </div>
+</div>

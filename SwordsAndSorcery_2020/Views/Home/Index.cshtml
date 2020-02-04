@@ -1,0 +1,171 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    var order = 0;
+    var viewportheight;
+    var viewportwidth;
+    var lastObj;
+    var imgLeft;
+    var imgTop;
+
+    $(document).ready(function () {
+        $('#Est').hide();
+        $('#Vivat').hide();
+        $('#Oriens').hide();
+        $('#Sum').hide();
+        $('#Dad').hide();
+        $('#Not').hide();
+        $('#Prod').hide();
+        $('#Semper').hide();
+        $('#contentIndex').hide();
+
+        $('#btnSumClose').click(function () {
+            $('#divSum').hide();
+            $('#Semper').show();
+            messAround($('#Semper'), imgTop, imgLeft);
+        });
+
+        var bodyHeight = $('#body').height();
+        imgLeft = (screen.availWidth - 1200) / 2;
+        if (bodyHeight < 600)
+            bodyHeight = 600;
+        $('#child').css({ height: bodyHeight, marginLeft: -8 + 'px' });
+
+
+        // the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
+
+        if (typeof window.innerWidth != 'undefined') {
+            viewportwidth = window.innerWidth,
+            viewportheight = window.innerHeight
+        }
+
+            // IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
+
+        else if (typeof document.documentElement != 'undefined'
+            && typeof document.documentElement.clientWidth !=
+            'undefined' && document.documentElement.clientWidth != 0) {
+            viewportwidth = document.documentElement.clientWidth,
+            viewportheight = document.documentElement.clientHeight
+        }
+
+        imgTop = 200;
+
+        var tid = setInterval(MovePic, 0);
+        function MovePic() {
+            switch (order)
+            {
+                case 0:
+                    $('#Est').show();
+                    messAround($('#Est'), imgTop, imgLeft);
+                    imgTop += 150;
+                    break;
+                case 1:
+                    $('#Vivat').show();
+                    messAround($('#Vivat'), imgTop, imgLeft);
+                    imgTop += 150;
+                    break;
+                case 2:
+                    $('#Oriens').show();
+                    messAround($('#Oriens'), imgTop, imgLeft);
+                    imgTop += 150;
+                    break;
+                case 3:
+                    $('#Sum').show();
+                    messAround($('#Sum'), imgTop, imgLeft);
+                    imgTop = 200;
+                    imgLeft += 1080
+                    break;
+                case 4:
+                    $('#Dad').show();
+                    messAround($('#Dad'), imgTop, imgLeft);
+                    imgTop += 150;
+                    break;
+                case 5:
+                    $('#Not').show();
+                    messAround($('#Not'), imgTop, imgLeft);
+                    imgTop += 150;
+                    break;
+                case 6:
+                    $('#Prod').show();
+                    messAround($('#Prod'), imgTop, imgLeft);
+                    imgTop += 150;
+                    break;
+                case 7:
+                    var pos = ((screen.availWidth - 1230) / 2) + 200;
+                    var wit = screen.availWidth - 1230 - 300;
+                    $('#contentIndex').animate({ top: 220 + 'px', left: pos + 'px', width: 800 + 'px' }, 500)
+                        .show();
+                case 8:
+                    clearInterval(tid);
+                    var pos = ((screen.availWidth - 750) / 2);
+                    $('.centerDiv').css({ 'left': pos + 'px', 'bottom': 80 + 'px' });
+                    break;
+                    
+            }
+            order += 1;
+        }
+        //book links
+        $('#Est').click(function () {
+            window.location = "Books/Indomitus_Est";
+        });
+        $('#Vivat').click(function () {
+            window.location = "Books/Indomitus_Vivat";
+        });
+        $('#Oriens').click(function () {
+            window.location = "Books/Indomitus_Oriens";
+        });
+        $('#Sum').click(function () {
+            window.location = "Books/Indomitus_Sum"
+        });
+        $('#Dad').click(function () {
+            window.location = "Books/Intermission"
+        });
+        $('#Not').click(function () {
+            window.location = "Books/Intermission"
+        });
+        $('#Prod').click(function () {
+            window.location = "Books/Intermission"
+        });
+        $('#Semper').click(function () {
+            window.location = "Books/Semper_Indomitus"
+        });
+        $('#img1').click(function () {
+            window.location = "Books/Semper_Indomitus"
+        });
+    });
+    function messAround(obj, _top, _Left) {
+        var top = viewportheight / 2;
+        var wid = viewportwidth / 2;
+        $(obj).animate({ left: _Left + 'px', top: _top + 'px', height: 150 + 'px', width: 100 + 'px' }, 0);
+        
+    }
+</script>
+
+<div id="child" class="maximize">
+    <img id="Est" class="indexPic" src="~/Images/IndomitusEst.jpg" />
+    <img id="Vivat" class="indexPic" src="~/Images/VivatCover.png" />
+    <img id="Oriens" class="indexPic" src="~/Images/OriensCover.png" />
+    <img id="Sum" class="indexPic" src="~/Images/IndomitusSumCover.jpg" />
+    <img id="Dad" class="indexPic" src="~/Images/DaddysGirlCover.png" />
+    <img id="Not" class="indexPic" src="~/Images/Not-Your-Cover.png" />
+    <img id="Prod" class="indexPic" src="~/Images/ProdigalSon.png" />
+    <img id="Semper" class="indexPic" src="~/Images/Semper.png" />
+    <div id="contentIndex">
+        <p>You've arrived at the home of the Fovean Chronicles.  This is the story of a man from our world who finds himself in another where magic is real and technology is a thing of fantasy.  This is a swords and sandals, wizards and warriors, down and dirty type of adventure, brought to you in the form of e-novels, Kindle, Nook and soft cover.</p>
+        <p>In a void between realities, the Fovean god War finds the dying shards of Anubis and offers him the power to return to former glory, in return for a champion for War's cause. War's instrument must be a heartless warrior willing to represent the darkest of the dark gods. Anubis scours Earth for the one suited to War's terrible purpose.</p>
+        <p>Randy Morden knows nothing of this. Anubis finds him as a child who won't be bullied just because he's outnumbered. He molds the child to a dour man through trials and disappointments, through set-backs both fair and unfair. When the trials are complete, he trades Randy to the god War without a thought or word, leaving Randy to survive in a foreign land where armed men rule through the strength of their steel and nobles scheme for power.</p>
+        <p>All Randy has to drive him is his terror of the wrath of War. Randy fights to stay alive as a stranger in a strange land, where even the rules aren't known to him.</p>
+        <p>Read of Uman and Dwarves, long-lived Uman-Chi and free-roving Men.  The adventures of Randy Morden and of those who live in the world he affected, their loves and losses, their triumps and their sacrifices will stay with you long after the books are finished.</p>
+    </div>
+    <div class="centerDiv" id="divSum">
+        <img class="indexPic" id="img1" src="~/Images/Semper.png" />
+        <img src="~/Images/close.jpg" class="img2" id="btnSumClose" />
+        <div class="float-right">
+            <p>Now available - the startling conclusion, the final book in the Chronicles: <i>Semper Indomitus</i>!</p>
+            <p>This answers all of the questions that you've been waiting YEARS to hear about.  If you've followed the books, you <i>will not</i> want to miss reading this book!</p>
+        </div>
+    </div>
+</div>

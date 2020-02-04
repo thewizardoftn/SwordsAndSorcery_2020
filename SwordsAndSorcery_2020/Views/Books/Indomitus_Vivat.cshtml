@@ -1,0 +1,105 @@
+﻿@model SwordsAndSorcery_2020.Models.BookModel
+@{
+    ViewBag.Title = "Indomitus_Vivat";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <script type="text/javascript">
+        var ht = parseInt(GetHeight()) - 250;
+        var beenPressed = 0;
+
+        $(document).ready(function () {
+            $('#divReadOne').hide();
+            $('#divReadTwo').hide();
+            $('#divReadThree').hide();
+            $('#read').click(function () {
+                $('#divReadOne').animate({ 'width': 40 + '%', 'height': ht + 'px', 'top': 100 + 'px', 'margin': 'auto' }, 500)
+                    .show();
+            });
+            $('#btnEstBook').click(function () {
+                window.open('http://www.amazon.com/Indomitus-Vivat-Fovean-Chronicles-Book-ebook/dp/B00K5ZOMEK/');
+            });
+            $('.close').click(function () {
+                $(this).parent().hide();
+            });
+
+        });
+        function Next(direction) {
+            if (direction == 'left') {
+                beenPressed = beenPressed - 1;
+                switch (beenPressed) {
+                    case -1:
+                        alert('There is nothing before the prologue');
+                        beenPressed += 1;
+                        break;
+                    case 0:
+                        $('#divReadOne').show();
+                        $('#divReadTwo').hide();
+                        break;
+                    case 1:
+                        $('#divReadTwo').show();
+                        $('#divReadThree').hide();
+                        break;
+                }
+            }
+            else {
+                switch (beenPressed) {
+                    case 0:
+                        $('#divReadOne').hide();
+                        $('#divReadTwo').animate({ 'width': 40 + '%', 'height': ht + 'px', 'top': 100 + 'px', 'margin': 'auto' }, 500)
+                       .show();
+                        beenPressed += 1;
+                        break;
+                    case 1:
+                        $('#divReadTwo').hide();
+                        $('#divReadThree').animate({ 'width': 40 + '%', 'height': ht + 'px', 'top': 100 + 'px', 'margin': 'auto' }, 500)
+                       .show();
+                        beenPressed += 1;
+                        break;
+                    case 2:
+                        alert('There are no more previews - why not buy the book?')
+                        break;
+                }
+            }
+        }
+    </script>
+<div class="book">
+    <img class="logo" src="~/Images/VivatCover.png" />
+    <p>
+        King Glennen of Eldador gave me a job to do - avenge his wife's death - and hey, you know me, I am to please!
+    </p>
+    <p>
+        So maybe he didn't say, "Attack the invincible city, sack it and pretty much slap the faces of every important person on Fovea," but then again I never went to charm school. I kind of do what I do.
+    </p>
+    <p>
+        But you know what I wish he had said? I wish he'd said, "Lupus, if you do plan to go sack the invincible city, you better make darn sure you have a way out of there, because the Uman-Chi are the most powerful Wizards on the planet, and every other nation is a friend to them."
+    </p>
+    <p>
+        Yeah, that would have been pretty good advice.
+    </p>
+    <p>
+        These are the continuing adventures of Randy Morden, a man from our world thrust into another where magic is real and technology sounds pretty far-fetched. As the chosen of a god named "War," Randy has a mission to fulfill a destiny that he doesn't understand and, incidentally, to keep himself and his family alive while doing it.
+    </p>
+    <p>
+        In Indomitus Vivat, the stakes are raised as War drives Randy to greater stakes and greater consequences, and pathway that could lead to empire, or straight to hell!
+    </p>
+    <br />
+    <p>
+        Indomitus Vivat is the second book of the <i>the Fovean Chronicles</i> and the conclusion of Indomitus Est.  
+    </p>
+    <div class="div">
+        <input type="button" value="Read" id="read" />
+        <input type="button" value="Buy" class="float-right" id="btnEstBook" />
+    </div>
+    <div id="divReadOne" class="divRead">
+        <img src="~/Images/close.jpg" class="close" />
+        @Html.Partial("_Book", Model.partialBooks[0])
+    </div>
+    <div id="divReadTwo" class="divRead">
+        <img src="~/Images/close.jpg" class="close" />
+        @Html.Partial("_Book", Model.partialBooks[1])
+    </div>
+    <div id="divReadThree" class="divRead">
+        <img src="~/Images/close.jpg" class="close" />
+        @Html.Partial("_Book", Model.partialBooks[2])
+    </div>
+</div>

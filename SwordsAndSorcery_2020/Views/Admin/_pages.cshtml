@@ -1,0 +1,79 @@
+﻿@model SwordsAndSorcery_2020.Models.AdminModel
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+</script>
+
+<h3>Page Info:</h3>
+<table class="adminDisp">
+    <tr>
+        <th>Date:</th>
+        <th>Page Name:</th>
+        <th>Hits</th>
+    </tr>
+    @foreach (var item in Model.Hits)
+    {
+        <tr>
+            <td>
+                @string.Format("{0:MM/dd/yy}", @item.HitDate)
+            </td>
+            <td>
+                @item.PageName
+            </td>
+            <td>
+                @item.Hits
+            </td>
+        </tr>
+    }
+</table>
+<table class="adminDisp">
+    <tr>
+        <th colspan="5">Last 5 Users</th>
+    </tr>
+    <tr>
+        <th>
+            Create Date:
+        </th>
+        <th>
+            User ID:
+        </th>
+        <th>
+            User Name:
+        </th>
+        <th>
+            Confirmed:
+        </th>
+    </tr>
+    @foreach (var item in Model.Users)
+    {
+        <tr>
+            <td>
+                    @string.Format("{0:MM/dd/yy}", @item.CreateDate)
+            </td>
+            <td>
+                @item.UserID
+            </td>
+            <td>
+                @item.UserName
+            </td>
+            <td>
+                @item.Confirmed
+            </td>
+        </tr>
+    }
+</table>
+<ol>
+    <li>
+        @Html.Raw(Model.PeopleOn)
+        <ul>
+            @foreach (var item in @Model.UserList)
+            {
+                <li>
+                    <span>@item.Key </span><span>@item.Value</span>
+                </li>
+            }
+        </ul>
+    </li>
+</ol>

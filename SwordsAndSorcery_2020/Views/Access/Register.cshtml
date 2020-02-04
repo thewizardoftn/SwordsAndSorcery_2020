@@ -1,0 +1,108 @@
+﻿@model SwordsAndSorcery_2020.Models.AccessModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="inWhite">Register</h2>
+@if (@Model != null)
+{
+    if(@Model.ErrorMessage != null)
+    {
+        <div class="errorMessage">
+            @Html.Raw(@Model.ErrorMessage)
+        </div>
+    }
+}
+<div class="accessSquare">
+    @using(Html.BeginForm(new {ReturnUrl = ViewBag.ReturnUrl}))
+    {
+        @Html.ValidationSummary(true)
+        <ol>
+            <li>
+                <ul>
+                    <li>
+                        Login:
+                    </li>
+                    <li>
+
+                        @Html.TextBoxFor(m=>m.UserName, new { @maxlength = "50"})
+                    </li>
+                    <li>
+                        @Html.ValidationMessageFor(m=>m.UserName)
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>
+                        Password:
+                    </li>
+                    <li>
+                        @Html.PasswordFor(m=>m.UserPassword, new { @maxlength = "50" })
+                    </li>
+                    <li>
+                        @Html.ValidationMessageFor(m=>m.UserPassword)
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>
+                        First Name:
+                    </li>
+                    <li>
+                        @Html.TextBoxFor(m=>m.FirstName, new { @maxlength = "25" })
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>
+                        Last Name:
+                    </li>
+                    <li>
+                        @Html.TextBoxFor(m=>m.LastName, new { @maxlength = "25" })
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>
+                        E-Mail Address:
+                    </li>
+                    <li>
+                        @Html.TextBoxFor(m=>m.EMail, new { @maxlength = "125" })
+                    </li>
+                    <li>
+                        @Html.ValidationMessageFor(m=>m.EMail)
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>
+                        Remember Me:
+                    </li>
+                    <li>
+                        @Html.CheckBoxFor(m=>m.RememberMe)
+                    </li>
+                    <li>
+                        <span class="inGreen">(You will be logged in automatically when you return)</span>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                @Html.ActionLink("Login", "Login") If you already have an account
+            </li>
+        </ol>
+        <p>
+            <input type="submit" value="Log in" />
+        </p>
+    }
+</div>
+<div class="center inRed">
+    You will receive a confirmation e-mail in a few moments
+</div>
+
