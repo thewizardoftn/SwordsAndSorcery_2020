@@ -49,10 +49,23 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPalCheckoutSdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPalCheckoutSdk.1.0.3\lib\netstandard2.0\PayPalCheckoutSdk.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPalCoreSDK, Version=1.7.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPalCoreSDK.1.7.1\lib\net451\PayPalCoreSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPalHttp-Dotnet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPalHttp.1.0.0\lib\netstandard2.0\PayPalHttp-Dotnet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -143,6 +156,9 @@
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\PageHit.cs" />
+    <Compile Include="Models\PayPalClient.cs" />
+    <Compile Include="Models\PayPalConfig.cs" />
+    <Compile Include="Models\PaypalConfiguration.cs" />
     <Compile Include="Models\ProcessLogin.cs" />
     <Compile Include="Models\SaveError.cs" />
     <Compile Include="Models\UserCache.cs" />
@@ -235,6 +251,7 @@
     <Content Include="Images\Right-Arrow-down.jpg" />
     <Content Include="Images\Right-Arrow-icon.jpg" />
     <Content Include="Images\Semper.png" />
+    <Content Include="Images\specialOffer.png" />
     <Content Include="Images\SSLogo.gif" />
     <Content Include="Images\VivatCover.png" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -295,6 +312,10 @@
     <Content Include="Views\Books\_Book.cshtml" />
     <Content Include="Views\Other\Index.cshtml" />
     <Content Include="Views\Other\_Email.cshtml" />
+    <Content Include="Views\Home\Special_Offer.cshtml" />
+    <Content Include="Views\Home\PaymentWithPaypal.cshtml" />
+    <Content Include="Views\Home\FailureView.cshtml" />
+    <Content Include="Views\Home\SuccessView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -32,7 +32,6 @@ body {
 #child
 {
     padding:5px;
-    margin:15px;
     border-radius:15px;
     background-color:white;
 }
@@ -213,10 +212,23 @@ footer {
         margin: 2px;
         cursor:pointer;
     }
-
-/* login
+.bookRibbon{
+    padding:0;
+    list-style:none;
+}
+    .bookRibbon li {
+        display: inline-block;
+        margin-right: 5px;
+        box-shadow: 5px 5px 5px #5c7c99;
+    }
+        .bookRibbon li img {
+            height:150px;
+            width:100px;
+            cursor:pointer;
+        }
+        /* login
 ----------------------------------------------------------*/
-#login {
+        #login {
     display: block;
     font-size: .85em;
     text-align: right;
@@ -588,18 +600,17 @@ ul.NewsItem .quote-item
         cursor:pointer;
     }
 .centerDiv{
-    width:750px;
+    padding:5px;
     position:absolute;
-    height:150px;
     font-family:Arial;
     font-weight:bold;
     font-size:larger;
     background-color:white;
     border: 2px black solid;
+    border-radius:15px;
 }
     .centerDiv .indexPic {
         height: 150px;
-        float: left
     }
     .centerDiv .img2{
         height: 25px;
@@ -610,9 +621,14 @@ ul.NewsItem .quote-item
         cursor:pointer;
     }
     .centerDiv div{
-        float:right;
-        width:600px;
         vertical-align:top;
+    }
+    .centerDiv .adv{
+        list-style:none;
+        padding:0;
+    }
+    .centerDiv .adv li{
+        padding:0px;
     }
 .center{
     width:200px;
@@ -808,7 +824,6 @@ ul.NewsItem .quote-item
 /*****************************Index Page*****************************/
 .indexPic
 {
-    position:absolute;
     top:0px;
     left: 0px;
     z-index: 2000;
@@ -818,13 +833,16 @@ ul.NewsItem .quote-item
 {
     width:100%;
     min-height:100%;
+    font-size: larger;
 }
-#contentIndex
-{
-    position:absolute;
-    font-size:large;
-    border:2px solid black;
-    padding:5px;
+#contentIndex {
+    font-size: large;
+    border: 2px solid black;
+    padding: 5px;
+    box-shadow: 10px 10px 5px #5c7c99;
+    width:750px;
+    margin-left:auto;
+    margin-right:auto;
 }
 /********************************Fovea Page***************************/
 #childFovea

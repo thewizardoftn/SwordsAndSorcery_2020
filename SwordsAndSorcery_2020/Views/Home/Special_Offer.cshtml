@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = ViewBag.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
+</head>
+<script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+<script>paypal.Buttons().render('#child');</script>
+
+<div id="child" class="maximize">
+    <h2>A Special Offer from the Author of the Fovean Chronicles</h2>
+
+    <p>
+        How would you like a personalized, signed copy of <i>Indomitus Est</i>, the first book in the Fovean Chronicles?
+    </p>
+    <p>
+        Not only that, how would you like it for LESS than you could buy it for, online or in a store?
+    </p>
+    <p>
+        <a href="Contact">Contact me</a> now, put 'I want a book' in the subject, if you need more information or:
+    </p>
+    <p>
+        Use this form right now to order it through <a href="PaymentWithPaypal">PayPal</a> !
+    </p>
+    
+
+</div>

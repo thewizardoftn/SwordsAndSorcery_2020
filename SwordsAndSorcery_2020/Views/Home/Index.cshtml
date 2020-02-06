@@ -12,147 +12,72 @@
     var imgTop;
 
     $(document).ready(function () {
-        $('#Est').hide();
-        $('#Vivat').hide();
-        $('#Oriens').hide();
-        $('#Sum').hide();
-        $('#Dad').hide();
-        $('#Not').hide();
-        $('#Prod').hide();
-        $('#Semper').hide();
-        $('#contentIndex').hide();
-
-        $('#btnSumClose').click(function () {
-            $('#divSum').hide();
-            $('#Semper').show();
-            messAround($('#Semper'), imgTop, imgLeft);
-        });
-
-        var bodyHeight = $('#body').height();
-        imgLeft = (screen.availWidth - 1200) / 2;
-        if (bodyHeight < 600)
-            bodyHeight = 600;
-        $('#child').css({ height: bodyHeight, marginLeft: -8 + 'px' });
-
-
-        // the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
-
-        if (typeof window.innerWidth != 'undefined') {
-            viewportwidth = window.innerWidth,
-            viewportheight = window.innerHeight
-        }
-
-            // IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
-
-        else if (typeof document.documentElement != 'undefined'
-            && typeof document.documentElement.clientWidth !=
-            'undefined' && document.documentElement.clientWidth != 0) {
-            viewportwidth = document.documentElement.clientWidth,
-            viewportheight = document.documentElement.clientHeight
-        }
-
-        imgTop = 200;
-
-        var tid = setInterval(MovePic, 0);
-        function MovePic() {
-            switch (order)
-            {
-                case 0:
-                    $('#Est').show();
-                    messAround($('#Est'), imgTop, imgLeft);
-                    imgTop += 150;
-                    break;
-                case 1:
-                    $('#Vivat').show();
-                    messAround($('#Vivat'), imgTop, imgLeft);
-                    imgTop += 150;
-                    break;
-                case 2:
-                    $('#Oriens').show();
-                    messAround($('#Oriens'), imgTop, imgLeft);
-                    imgTop += 150;
-                    break;
-                case 3:
-                    $('#Sum').show();
-                    messAround($('#Sum'), imgTop, imgLeft);
-                    imgTop = 200;
-                    imgLeft += 1080
-                    break;
-                case 4:
-                    $('#Dad').show();
-                    messAround($('#Dad'), imgTop, imgLeft);
-                    imgTop += 150;
-                    break;
-                case 5:
-                    $('#Not').show();
-                    messAround($('#Not'), imgTop, imgLeft);
-                    imgTop += 150;
-                    break;
-                case 6:
-                    $('#Prod').show();
-                    messAround($('#Prod'), imgTop, imgLeft);
-                    imgTop += 150;
-                    break;
-                case 7:
-                    var pos = ((screen.availWidth - 1230) / 2) + 200;
-                    var wit = screen.availWidth - 1230 - 300;
-                    $('#contentIndex').animate({ top: 220 + 'px', left: pos + 'px', width: 800 + 'px' }, 500)
-                        .show();
-                case 8:
-                    clearInterval(tid);
-                    var pos = ((screen.availWidth - 750) / 2);
-                    $('.centerDiv').css({ 'left': pos + 'px', 'bottom': 80 + 'px' });
-                    break;
-                    
-            }
-            order += 1;
-        }
+        
         //book links
         $('#Est').click(function () {
-            window.location = "Books/Indomitus_Est";
+            window.location = "../Books/Indomitus_Est";
         });
         $('#Vivat').click(function () {
-            window.location = "Books/Indomitus_Vivat";
+            window.location = "../Books/Indomitus_Vivat";
         });
         $('#Oriens').click(function () {
-            window.location = "Books/Indomitus_Oriens";
+            window.location = "../Books/Indomitus_Oriens";
         });
         $('#Sum').click(function () {
-            window.location = "Books/Indomitus_Sum"
+            window.location = "../Books/Indomitus_Sum"
         });
         $('#Dad').click(function () {
-            window.location = "Books/Intermission"
+            window.location = "../Books/Intermission"
         });
         $('#Not').click(function () {
-            window.location = "Books/Intermission"
+            window.location = "../Books/Intermission"
         });
         $('#Prod').click(function () {
-            window.location = "Books/Intermission"
+            window.location = "../Books/Intermission"
         });
         $('#Semper').click(function () {
-            window.location = "Books/Semper_Indomitus"
+            window.location = "../Books/Semper_Indomitus"
         });
         $('#img1').click(function () {
-            window.location = "Books/Semper_Indomitus"
-        });
+            window.location = "Home/Special_Offer";
+        })
+        var scr = $('#child').width();
+        var leftMar = (scr - 835) / 2;
+        $('.bookRibbon').css('marginLeft', leftMar + 'px');
+        if (leftMar < 100)
+            leftMar = 100;
+        $('#divSum').css({ 'right': 5 + 'px', 'top': 400 + 'px', 'width': leftMar + 'px' }).draggable().resizable();
     });
-    function messAround(obj, _top, _Left) {
-        var top = viewportheight / 2;
-        var wid = viewportwidth / 2;
-        $(obj).animate({ left: _Left + 'px', top: _top + 'px', height: 150 + 'px', width: 100 + 'px' }, 0);
-        
-    }
+
 </script>
 
 <div id="child" class="maximize">
-    <img id="Est" class="indexPic" src="~/Images/IndomitusEst.jpg" />
-    <img id="Vivat" class="indexPic" src="~/Images/VivatCover.png" />
-    <img id="Oriens" class="indexPic" src="~/Images/OriensCover.png" />
-    <img id="Sum" class="indexPic" src="~/Images/IndomitusSumCover.jpg" />
-    <img id="Dad" class="indexPic" src="~/Images/DaddysGirlCover.png" />
-    <img id="Not" class="indexPic" src="~/Images/Not-Your-Cover.png" />
-    <img id="Prod" class="indexPic" src="~/Images/ProdigalSon.png" />
-    <img id="Semper" class="indexPic" src="~/Images/Semper.png" />
+    <ol class="bookRibbon">
+        <li>
+            <img id="Est" src="~/Images/IndomitusEst.jpg" />
+        </li>
+        <li>
+            <img id="Vivat" src="~/Images/VivatCover.png" />
+        </li>
+        <li>
+            <img id="Oriens" src="~/Images/OriensCover.png" />
+        </li>
+        <li>
+            <img id="Sum" src="~/Images/IndomitusSumCover.jpg" />
+        </li>
+        <li>
+            <img id="Dad" src="~/Images/DaddysGirlCover.png" />
+        </li>
+        <li>
+            <img id="Not" src="~/Images/Not-Your-Cover.png" />
+        </li>
+        <li>
+            <img id="Prod" src="~/Images/ProdigalSon.png" />
+        </li>
+        <li>
+            <img id="Semper" src="~/Images/Semper.png" />
+        </li>
+    </ol>
     <div id="contentIndex">
         <p>You've arrived at the home of the Fovean Chronicles.  This is the story of a man from our world who finds himself in another where magic is real and technology is a thing of fantasy.  This is a swords and sandals, wizards and warriors, down and dirty type of adventure, brought to you in the form of e-novels, Kindle, Nook and soft cover.</p>
         <p>In a void between realities, the Fovean god War finds the dying shards of Anubis and offers him the power to return to former glory, in return for a champion for War's cause. War's instrument must be a heartless warrior willing to represent the darkest of the dark gods. Anubis scours Earth for the one suited to War's terrible purpose.</p>
@@ -161,11 +86,18 @@
         <p>Read of Uman and Dwarves, long-lived Uman-Chi and free-roving Men.  The adventures of Randy Morden and of those who live in the world he affected, their loves and losses, their triumps and their sacrifices will stay with you long after the books are finished.</p>
     </div>
     <div class="centerDiv" id="divSum">
-        <img class="indexPic" id="img1" src="~/Images/Semper.png" />
         <img src="~/Images/close.jpg" class="img2" id="btnSumClose" />
-        <div class="float-right">
-            <p>Now available - the startling conclusion, the final book in the Chronicles: <i>Semper Indomitus</i>!</p>
-            <p>This answers all of the questions that you've been waiting YEARS to hear about.  If you've followed the books, you <i>will not</i> want to miss reading this book!</p>
-        </div>
+        <ul class="adv">
+            <li>
+                <img class="indexPic" id="img1" src="~/Images/specialOffer.png" />
+            </li>
+            <li>
+                <div>
+                    <p>How would you like a personalized, signed copy of <i> Indomitus Est?</i>!</p>
+                    <p>Click the image to find out more!</p>
+                </div>
+            </li>
+        </ul>
+
     </div>
 </div>
