@@ -1,9 +1,10 @@
 ﻿@model SwordsAndSorcery_2020.ModelTypes.UserType
 
-@if (@Model.UserID>0) {
+@if (@Model.UserID > 0)
+{
     <ul>
         <li>
-        Hello, @Html.ActionLink(@Model.UserName, "Manage", "Access", htmlAttributes: new { @class = "username", title = "Manage", @id = "_currentUser", @data_ID = @Model.UserID })!
+            Hello, @Html.ActionLink(@Model.UserName, "Manage", "Access", new { UserID = @Model.UserID }, new { @class = "username", title = "Manage" })!
         </li>
         <li>
             @Html.ActionLink("Log Out", "../Access/LogOff", new { userID = @Model.UserID })
@@ -18,9 +19,15 @@
             </li>
         </ul>
     }
-} else {
+}
+else
+{
     <ul>
         <li>@Html.ActionLink("Register", "Register", "Access", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log in", "Login", "Access")</li>
     </ul>
+}
+@if (Model.UserID == 2)
+{
+    @Html.ActionLink("Admin", "Index", "Admin", routeValues: null, htmlAttributes: new { @class="bumpTop" })
 }

@@ -16,7 +16,7 @@ namespace DataTier.Repository
         public int UserID { get; set; }
         public string Page { get; set; }
         public string Process { get; set; }
-
+        public Dictionary<string, string> Requests { get; set; }
         public List<Error_Type> ErrorList { get; set; }
         public List<EmailDataType> Emails { get; set; }
         public List<IPSpec> IPS { get; set; }
@@ -41,7 +41,7 @@ namespace DataTier.Repository
         {
             using (Data DC = new Data("conn", Page, Process))
             {
-
+                GetBookReqs(DC);
                 GetEmails(DC);
                 GetPageHits(DC);
                 GetErrors(DC);
@@ -51,6 +51,28 @@ namespace DataTier.Repository
                 DC.Dispose();
             }
         }
+        public void GetBookReqs(Data DC)
+        {
+            string sSQL = "SELECT * FROM [dbo].[EMails] Order by Name";
+            Requests = new Dictionary<string, string>();
+            try
+            {
+                DC.AddCommand(CommandType.Text, sSQL);
+                DataTable dt = DC.ExecuteCommandForDT();
+                if (dt != null)
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        Requests.Add(value: dr["Email"].ToString(),
+                            key: dr["Name"].ToString());
+                    }
+            }
+            catch (Exception ex)
+            {
+                DC.MakeError(ex, Process, sSQL);
+
+            }
+        }
+
         public void GetEmails(Data DC)
         {
             DataTable dt = new DataTable();
@@ -81,10 +103,7 @@ namespace DataTier.Repository
                 DC.MakeError(ex, Process, sSQL);
 
             }
-            finally
-            {
-                DC.Dispose();
-            }
+
             Emails = emails;
         }
         public bool AddToDisAllowed(string IP)

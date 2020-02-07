@@ -37,7 +37,13 @@ namespace SwordsAndSorcery_2020.Controllers
             return View();
 
         }
+        public JsonResult SaveData(string email, string name)
+        {
+            HomeModel model = new HomeModel();
+            string sRet = model.SaveEMail(email, name);
 
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Special_Offer()
         {
             ViewBag.Title = "A special offer from The Fovean Chronicles!";

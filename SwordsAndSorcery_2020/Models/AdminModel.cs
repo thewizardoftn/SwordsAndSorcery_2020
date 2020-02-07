@@ -17,6 +17,7 @@ namespace SwordsAndSorcery_2020.Models
         public List<Error_Type> Errors { get; set; }
         public List<IPType> IPS { get; set; }
         public List<PageHitsType> Hits { get; set; }
+        public Dictionary<string, string>Requests { get; set; }
         public List<UserType> Users { get; set; }
         //News section
         public string NewsDate { get; set; }
@@ -44,6 +45,7 @@ namespace SwordsAndSorcery_2020.Models
 
             AdminRepository a = new AdminRepository(UserID, "AdminModel", "AdminModel");
             a.GetCollections();
+            Requests = a.Requests;
 
             List<EmailType> emails = new List<EmailType>();
             foreach (var item in a.Emails)

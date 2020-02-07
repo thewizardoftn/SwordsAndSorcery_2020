@@ -57,3 +57,31 @@
         </tr>
     }
 </table>
+<h2>Requests</h2>
+<div>
+    <ol class="reqList">
+        <li>
+            <ul>
+                <li class="minLen bold">
+                    Name:
+                </li>
+                <li class="bold">
+                    Email
+                </li>
+            </ul>
+        </li>
+        @foreach (var item in Model.Requests)
+        {
+            <li>
+                <ul>
+                    <li class="minLen">
+                        @item.Key
+                    </li>
+                    <li>
+                        @item.Value
+                    </li>
+                </ul>
+            </li>
+        }
+    </ol>
+</div>

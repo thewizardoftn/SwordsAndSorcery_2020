@@ -137,5 +137,31 @@ namespace DataTier.Repository
                 }
             }
         }
+
+        public string SaveEmail(string email, string name)
+        {
+            string sSQL = "INSERT INTO dbo.EMails (Email, Name) VALUES(@Email, @Name) ";
+            string sRet = "";
+            using (Data DC = new Data("conn", Page, Process))
+            {
+                try
+                {
+                    DC.AddCommand(CommandType.Text, sSQL);
+                    DC.AttachParameterByValue("Email", email);
+                    DC.AttachParameterByValue("Name", name);
+                    sRet = DC.ExecuteCommand().StringSafe();
+                }
+                catch (Exception ex)
+                {
+                    DC.MakeError(ex, Process, sSQL);
+
+                }
+                finally
+                {
+                    DC.Dispose();
+                }
+            }
+            return sRet;
+        }
     }
 }

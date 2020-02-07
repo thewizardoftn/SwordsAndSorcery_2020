@@ -109,9 +109,11 @@ nav
 {
     font-size:large;
 }
-.width60
-{
-    width:600px;
+.bumpTop{
+    margin-top:10px;
+}
+.width60 {
+    width: 600px;
 }
 .width40
 {
@@ -821,13 +823,27 @@ ul.NewsItem .quote-item
     {
         float:right;
     }
+.reqList{
+    padding:0;
+}
+    .reqList .minLen {
+        min-width:125px;
+    }
+    .reqList li {
+        list-style: none;
+        padding:0;
+    }
+        .reqList li ul li {
+            margin-left: 5px;
+            display: inline-block;
+        }
+}
 /*****************************Index Page*****************************/
-.indexPic
-{
-    top:0px;
+.indexPic {
+    top: 0px;
     left: 0px;
     z-index: 2000;
-    cursor:pointer;
+    cursor: pointer;
 }
 .maximize
 {
@@ -841,6 +857,27 @@ ul.NewsItem .quote-item
     padding: 5px;
     box-shadow: 10px 10px 5px #5c7c99;
     width:750px;
+    margin-left:auto;
+    margin-right:auto;
+}
+/*****************************Order Page*******************************/
+.orderList{
+    list-style-image:none;
+    font-size:large;
+}
+    .orderList .spaced{
+        min-width:125px;
+    }
+    .orderList li {
+        list-style: none;
+    }
+    .orderList li ul li {
+        padding: 0;
+        display: inline-block;
+    }
+.boxedSection{
+    width:500px;
+    font-size:larger;
     margin-left:auto;
     margin-right:auto;
 }
