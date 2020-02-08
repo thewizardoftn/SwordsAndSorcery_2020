@@ -1,50 +1,57 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title -The Home of the Fovean Chronicles - an epic fantasy e-book series in the old school traditions of swords and sorcery, wizard and warriors</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="Description" content="This is the story of a man from our world, a Navy Nuclear Propulsion Technician, who finds himself in a fantasy world where magic is real and warlords rule by the sword." />
-        <meta name="keywords" content="fantasy, reality, swords, sorcery, swords and sorcery, swords and sandals, magic, wizards, warriors, horses, faith, christian, history, historic, historic fantasy, epic, epic fantasy" />
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title -The Home of the Fovean Chronicles - an epic fantasy e-book series in the old school traditions of swords and sorcery, wizard and warriors</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="Description" content="This is the story of a man from our world, a Navy Nuclear Propulsion Technician, who finds himself in a fantasy world where magic is real and warlords rule by the sword." />
+    <meta name="keywords" content="fantasy, reality, swords, sorcery, swords and sorcery, swords and sandals, magic, wizards, warriors, horses, faith, christian, history, historic, historic fantasy, epic, epic fantasy" />
+    <meta property="og:image" content="~/Images/SSLogo.gif" />
+    <meta property="og:title" content="Swords &amp; Sorcery" />
+    <meta property="og:site_name" content="The Fovean Chronicles" />
+    <meta property="og:url" content="http://swordsandsorcery.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Description from the author: SwordsAndSorcery.com is the home of the Fovean Chronicles, the story of 
+          Randy Morden, a man kicked out of the US Naval Nuclear Power program, tricked by a dying god to be the instrument of another god in a 
+          universe where magic is real.  Randy must act as that god's representative on Fovea, or face the ravages of hell." />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render(ViewBag.Css)
+    @Scripts.Render("~/Scripts/jquery-3.4.1.js")
+    @Scripts.Render("~/Scripts/jquery-ui-1.12.1.js")
+    @Styles.Render("~/Scripts/jquery-ui-1.12.1.css")
 
-        <meta name="viewport" content="width=device-width" />
-        @Styles.Render(ViewBag.Css)
-        @Scripts.Render("~/Scripts/jquery-3.4.1.js")
-        @Scripts.Render("~/Scripts/jquery-ui-1.12.1.js")
-        @Styles.Render("~/Scripts/jquery-ui-1.12.1.css")
-        
-        @Scripts.Render("~/Scripts/modernizr-2.6.2.js")
-      
-        <script type="text/javascript">
-            $(document).ready(function () {
+    @Scripts.Render("~/Scripts/modernizr-2.6.2.js")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            BodyHeight();
+            $(window).resize(function () {
                 BodyHeight();
-                $(window).resize(function () {
-                    BodyHeight();
-                });
-                $('#facebook').click(function () {
-                    window.open('https://www.facebook.com/pages/The-Fovean-Chronicles/114797601937754');
-                });
-                $('#rss').click(function () {
-                    window.open('http://www.swordsandsorcery.net/rss.xml');
-                });
             });
-            function BodyHeight() {
-                var ht = parseInt(GetHeight()) - 250;
-                $('#body').css('min-height', ht + 'px');
-            }
-            function GetHeight() {
-                var xheight = null;
-                if (window.screen != null)
-                    xheight = window.screen.availHeight;
+            $('#facebook').click(function () {
+                window.open('https://www.facebook.com/pages/The-Fovean-Chronicles/114797601937754');
+            });
+            $('#rss').click(function () {
+                window.open('http://www.swordsandsorcery.net/rss.xml');
+            });
+        });
+        function BodyHeight() {
+            var ht = parseInt(GetHeight()) - 250;
+            $('#body').css('min-height', ht + 'px');
+        }
+        function GetHeight() {
+            var xheight = null;
+            if (window.screen != null)
+                xheight = window.screen.availHeight;
 
-                if (window.innerWidth != null)
-                    xheight = window.innerHeight;
+            if (window.innerWidth != null)
+                xheight = window.innerHeight;
 
-                return xheight;
+            return xheight;
 
-            }
-        </script>
-    </head>
+        }
+    </script>
+</head>
     <body>
         <div id="header">
             @Html.Partial("_header", new SwordsAndSorcery_2020.Models.HeaderModel())
