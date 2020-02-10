@@ -155,7 +155,11 @@ namespace SwordsAndSorcery_2020.Models
                             catch { }
                             AddToCache(u);
                         }
-
+                        else
+                        {
+                            //last chance - see if this person is in the database
+                            u = FindByIPAddress(IPAddress);
+                        }
                         break;
                 }
             }
