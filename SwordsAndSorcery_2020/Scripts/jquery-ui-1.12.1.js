@@ -11998,7 +11998,6 @@ $.widget( "ui.dialog", {
 		resizable: true,
 		show: null,
 		title: null,
-		width: 300,
 
 		// Callbacks
 		beforeClose: null,
@@ -12350,7 +12349,7 @@ $.widget( "ui.dialog", {
 				icon: "ui-icon-closethick",
 				showLabel: false
 			} )
-			.appendTo( this.uiDialogTitlebar );
+			.appendTo( this.uiDialogTitlebar ).hide();
 
 		this._addClass( this.uiDialogTitlebarClose, "ui-dialog-titlebar-close" );
 		this._on( this.uiDialogTitlebarClose, {
@@ -12360,7 +12359,7 @@ $.widget( "ui.dialog", {
 			}
 		} );
 
-		uiDialogTitle = $( "<span>" ).uniqueId().prependTo( this.uiDialogTitlebar );
+		uiDialogTitle = $( "<h3>" ).uniqueId().prependTo( this.uiDialogTitlebar );
 		this._addClass( uiDialogTitle, "ui-dialog-title" );
 		this._title( uiDialogTitle );
 

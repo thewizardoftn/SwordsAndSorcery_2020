@@ -37,8 +37,11 @@ namespace SwordsAndSorcery_2020.Models
             try
             {
                 users = _cache.Get("SSUsers") as List<UserType>;
+                if (users == null)
+                    users = new List<UserType>();
             }
             catch { }
+
             return users.Count;
         }
 

@@ -9,7 +9,7 @@
     $(document).ready(function () {
         var one = parseInt(Math.random() * 10);
         var two = parseInt(Math.random() * 10);
-        $('#getData').hide();
+        $('#get_Data').hide();
         $('#btnSubmit').hide();
         $('#btnSend').attr("disabled", true);
         $('#Value1').val(one);
@@ -20,11 +20,9 @@
             var sol = parseInt($(this).val());
             if (sol = one + two) {
                 $('#btnSend').attr("disabled", false);
-                $('#getData').dialog({
+                $('#get_Data').dialog({
                     modal: true,
-                    minWidth: 300,
-                    width: 300,
-                    minHeight: 200,
+                    dialogClass: 'dialogClass',
                     resize: 'auto',
                     buttons: {
                         "Close": function () {
@@ -58,53 +56,53 @@
     @Html.ValidationSummary(true)
     @using (Html.BeginForm())
     {
-        <div id="contactTable">
-            <table>
-                <tr>
-                    <td>
-                        <span>Name:</span>
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(m => m.SenderName, new { id = "txtName", @class = "mediumText", @maxlength = "150" })
-                        <span class="field-validation-valid" asp-validation-for="SenderName"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span>E-mail Address:</span>
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(m => m.SenderEmail, new { id = "txtEmail", @class = "mediumText", @maxlength = "150" }) <br />
-                        <span class="field-validation-valid" asp-validation-for="SenderEmail"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <span class="inBold">I am not a robot or spider:</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.TextBoxFor(m => m.Value1, new { @class = "smallTextBox" }) + @Html.TextBoxFor(m => m.Value2, new { @class = "smallTextBox" }) =
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(m => m.Solution, new { @class = "smallTextBox" })
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <span class="inRed">Enter the value of the first two boxes and then click the screen'</span>
-                    </td>
-                </tr>
-            </table>
+<div id="contactTable">
+    <table>
+        <tr>
+            <td>
+                <span>Name:</span>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.SenderName, new { id = "txtName", @class = "mediumText", @maxlength = "150" })
+                <span class="field-validation-valid" asp-validation-for="SenderName"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>E-mail Address:</span>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.SenderEmail, new { id = "txtEmail", @class = "mediumText", @maxlength = "150" }) <br />
+                <span class="field-validation-valid" asp-validation-for="SenderEmail"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <span class="inBold">I am not a robot or spider:</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBoxFor(m => m.Value1, new { @class = "smallTextBox" }) + @Html.TextBoxFor(m => m.Value2, new { @class = "smallTextBox" }) =
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Solution, new { @class = "smallTextBox" })
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <span class="inRed">Enter the value of the first two boxes and then click the screen'</span>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" id="btnSubmit" class="hidden"/>
 
-        </div>
+</div>
         @Html.HiddenFor(m => m.Message, new { @id = "txtMessage" })
-        <div id="getData" title="Leave your feedback">
+        <div id="get_Data" title="Leave your feedback">
             <span style="padding-top:20px;">Message:</span><br />
             <textarea id="diaText" class="diaText"></textarea>
         </div>
-        <input type="submit" id="btnSubmit" />
     }
 </div>
 

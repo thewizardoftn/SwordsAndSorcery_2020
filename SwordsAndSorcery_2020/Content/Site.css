@@ -1142,6 +1142,19 @@ ul.NewsItem .quote-item
         {
             float:right;
         }
+.dialogClass {
+    width: 425px;
+    height: auto;
+    border: 1px solid blue;
+    border-radius: 15px;
+    background-color: #d3dce0;
+    padding: 5px;
+}
+
+.diaText {
+    width: 500px;
+    height: 200px;
+}
 /* login
 ----------------------------------------------------------*/
 #login {
@@ -1363,7 +1376,4 @@ ul.NewsItem .quote-item
     display: inline-block;
     padding: 5px;
     overflow: hidden;
-}
-#getData{
-    background-color:#d3dce0;
 }

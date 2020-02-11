@@ -57,7 +57,7 @@ namespace SwordsAndSorcery_2020
             ViewBag.Developer = "Robert W. Brady, Jr.";
             ViewBag.DeveloperEmail = "mailto:bob@theguf.com?Subject=Question from web page";
 
-            ViewBag.Css = "~/Content/Site.css?v=1";
+            ViewBag.Css = "~/Content/Site.css?v=2";
         }
     }
 }
