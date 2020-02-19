@@ -80,22 +80,7 @@ namespace Utilities
 
             return type;
         }
-        public static string GetIPAddress()
-        {
-            string strHostName = Dns.GetHostName();
-            IPHostEntry sIPAddress = Dns.GetHostEntry(strHostName);
-            IPAddress[] addr = sIPAddress.AddressList;
-            string sRet = "";
 
-            if (addr != null)
-                if (addr.Length > 1)
-                    sRet = addr[1].StringSafe();
-                else if (addr.Length > 0)
-                    sRet = addr[0].StringSafe();
-                else
-                    sRet = "127.0.0.1";
-            return sRet;
-        }
 
         public static bool IsDate(object value)
         {

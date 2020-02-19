@@ -54,7 +54,7 @@ namespace SwordsAndSorcery_2020.Models
         }
         public BlogModel()
         {
-            string IP = Utils.GetIPAddress();
+            string IP = HttpContext.Current.Request.UserHostAddress;
             UserType user = UserCache.GetFromCache(0, IP);
             UserID = user.UserID;
             UserName = user.UserName;

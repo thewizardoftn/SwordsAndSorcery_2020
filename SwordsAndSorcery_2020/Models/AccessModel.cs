@@ -88,7 +88,7 @@ namespace SwordsAndSorcery_2020.Models
         public bool LogIn()
         {
             UserRepository ur = new UserRepository(-1, "AccessModel", "LogIN");
-            User_Type user = ur.GetUser(UserName, Encrypt(UserPassword), Utils.GetIPAddress(), RememberMe);
+            User_Type user = ur.GetUser(UserName, Encrypt(UserPassword), HttpContext.Current.Request.UserHostAddress, RememberMe);
             bool bRet = false;
 
             if (user != null)
@@ -135,7 +135,7 @@ namespace SwordsAndSorcery_2020.Models
                 Pass = Encrypt(UserPassword),
                 UserName = UserName,
                 RememberMe = RememberMe,
-                IPAddress = Utils.GetIPAddress(),
+                IPAddress = HttpContext.Current.Request.UserHostAddress,
                 Token = sToken
             };
 
@@ -157,7 +157,7 @@ namespace SwordsAndSorcery_2020.Models
                 LastName = LastName,
                 UserName = UserName,
                 RememberMe = RememberMe,
-                IPAddress = Utils.GetIPAddress(),
+                IPAddress = HttpContext.Current.Request.UserHostAddress,
                 UserID = UserID
             };
             return new UserRepository(UserID, "AccessModel", "UpdateUser").UpdateUser(user);

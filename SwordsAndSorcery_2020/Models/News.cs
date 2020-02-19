@@ -19,7 +19,7 @@ namespace SwordsAndSorcery_2020.Models
 
         public News()
         {
-            UserType user = UserCache.GetFromCache(0, Utils.GetIPAddress());
+            UserType user = UserCache.GetFromCache(0, HttpContext.Current.Request.UserHostAddress);
             UserID = user.UserID;
             DataTable dt = new DataTable();
             _news = new List<News_Type>();

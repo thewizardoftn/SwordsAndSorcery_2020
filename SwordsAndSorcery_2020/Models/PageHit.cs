@@ -12,7 +12,7 @@ namespace SwordsAndSorcery_2020.Models
     {
         public PageHit(string page, string ip)
         {
-            UserType user = UserCache.GetFromCache(0, Utils.GetIPAddress());
+            UserType user = UserCache.GetFromCache(0, HttpContext.Current.Request.UserHostAddress);
             if (user == null)
                 return;   
 

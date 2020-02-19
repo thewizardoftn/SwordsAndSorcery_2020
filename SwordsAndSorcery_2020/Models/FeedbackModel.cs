@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel.DataAnnotations;
@@ -27,7 +28,7 @@ namespace SwordsAndSorcery_2020.Models
 
         public FeedbackModel()
         {
-            UserType user = UserCache.GetFromCache(0, Utils.GetIPAddress());
+            UserType user = UserCache.GetFromCache(0, HttpContext.Current.Request.UserHostAddress);
             if (user == null)
                 return;                     //this is an indicator that the database is down
 

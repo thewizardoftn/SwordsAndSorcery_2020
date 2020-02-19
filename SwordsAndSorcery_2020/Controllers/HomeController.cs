@@ -67,7 +67,7 @@ namespace SwordsAndSorcery_2020.Controllers
             }
             else
             {
-                bool res = model.SaveFeedback(Utils.GetIPAddress());
+                bool res = model.SaveFeedback(ViewBag.IPAddress.StringSafe());
                 if (res)
                 {
                     Email e = new Email();
@@ -76,7 +76,7 @@ namespace SwordsAndSorcery_2020.Controllers
                     e.SenderName = model.SenderName;
                     e.Subject = "Feedback from Swords and Sorcery";
                     e.SendEmail(false);
-                    e.IP = Utils.GetIPAddress();
+                    e.IP = ViewBag.IPAddress.StringSafe();
                     return View("Index");
                 }
                 else
@@ -197,7 +197,7 @@ namespace SwordsAndSorcery_2020.Controllers
             catch (Exception ex)
             {
                 SaveError error = new SaveError();
-                UserType user = UserCache.GetFromCache(0, Utils.GetIPAddress());
+                UserType user = UserCache.GetFromCache(0, ViewBag.IPAddress.StringSafe());
                 ErrorType err = new ErrorType
                 {
                     Err_Message = ex.Message,

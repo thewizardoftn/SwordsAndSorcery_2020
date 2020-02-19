@@ -93,8 +93,12 @@ namespace SwordsAndSorcery_2020.Controllers
         }
         public ActionResult LogOff(int userID)
         {
-            string ip = Utils.GetIPAddress();
-            UserType user = UserCache.GetFromCache(0, ip);
+            string ip = "";
+
+            if (ViewBag.IPAddress != null)
+                ip = ViewBag.IPAddress.StringSafe(); 
+            
+            UserType user = UserCache.GetFromCache(userID, ip);
             AccessModel model = new AccessModel();
             UserType _user = new UserType();
 
@@ -197,7 +201,7 @@ namespace SwordsAndSorcery_2020.Controllers
         {
             if (model.UserID < 1)
             {
-                UserType user = UserCache.GetFromCache(0, Utils.GetIPAddress());
+                UserType user = UserCache.GetFromCache(0, ViewBag.IPAddress.StringSafe());
                 model.UserID = user.UserID;
             }
             bool bRet = model.Confirm();
@@ -250,7 +254,7 @@ namespace SwordsAndSorcery_2020.Controllers
                 if (user != null)
                 {
                     UserCache.AddToCache(user);
-                    UserCache.findInCache(Utils.GetIPAddress());
+                    UserCache.findInCache(ViewBag.IPAddress.StringSafe());
                 }
                 return RedirectToAction("index", "home");
             }
@@ -264,7 +268,7 @@ namespace SwordsAndSorcery_2020.Controllers
         public ActionResult Resend()
         {
             AccessModel model = new AccessModel();
-            UserType user = UserCache.GetFromCache(0, Utils.GetIPAddress());
+            UserType user = UserCache.GetFromCache(0, ViewBag.IPAddress.StringSafe());
             int UserID = user.UserID;
 
             string sToken = model.GetToken(UserID);

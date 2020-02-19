@@ -13,7 +13,7 @@ namespace SwordsAndSorcery_2020.Models
 
         public HeaderModel()
         {
-            User = UserCache.GetFromCache(0, Utils.GetIPAddress());
+            User = UserCache.GetFromCache(0, HttpContext.Current.Request.UserHostAddress);
         }
     }
 }

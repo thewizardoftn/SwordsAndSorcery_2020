@@ -25,8 +25,8 @@ namespace DataTier.Repository
 
         public int CreateUser(User_Type type)
         {
-            string sSQL = "INSERT INTO [dbo].[UserProfile] ([UserName], [IPAddress], [FirstName], [LastName], [Email], RememberMe) " +
-                "VALUES (@UserName, @IPAddress, @FirstName, @LastName, @Email, @RememberMe);SELECT Scope_Identity();";
+            string sSQL = "INSERT INTO [dbo].[UserProfile] ([UserName], [IPAddress], [FirstName], [LastName], [Email], RememberMe, [LastLogin]) " +
+                "VALUES (@UserName, @IPAddress, @FirstName, @LastName, @Email, @RememberMe, getdate());SELECT Scope_Identity();";
 
             int iRet = -5;
 
@@ -541,7 +541,7 @@ namespace DataTier.Repository
         public bool SetNewPassword(string UserPassword)
         {
             bool bRet = false;
-            string sSQL = "UPDATE [dbo].[UserProfile] SET [Password] = @Password WHERE [UserId]=@UserID";
+            string sSQL = "UPDATE [dbo].[webpages_Membership] SET [Password] = @Password, [PasswordChangedDate] = getdate() WHERE [UserId]=@UserID";
             //see if this is the roleid needs to be changed
             User_Type user = new User_Type();
             using (Data DC = new Data("conn", Page, Process))

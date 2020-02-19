@@ -151,7 +151,7 @@ namespace SwordsAndSorcery_2020.Models
                                 }
                                 else
                                 {
-                                    User_Type _u = new UserRepository(UserID, "UserCache", "GetFromCache").GetUserByIPAddress(Utils.GetIPAddress());
+                                    User_Type _u = new UserRepository(UserID, "UserCache", "GetFromCache").GetUserByIPAddress(HttpContext.Current.Request.UserHostAddress);
                                     u.CopyShallow(_u);
                                 }
                             }
@@ -162,6 +162,7 @@ namespace SwordsAndSorcery_2020.Models
                         {
                             //last chance - see if this person is in the database
                             u = FindByIPAddress(IPAddress);
+                            AddToCache(u);
                         }
                         break;
                 }

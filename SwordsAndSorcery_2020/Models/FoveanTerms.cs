@@ -16,7 +16,7 @@ namespace SwordsAndSorcery_2020.Models
 
         public FoveanTerms()
         {
-            UserType user = UserCache.GetFromCache(0, Utils.GetIPAddress());
+            UserType user = UserCache.GetFromCache(0, HttpContext.Current.Request.UserHostAddress);
             if (user == null)
                 return;                     //this is an indicator that the database is down
 

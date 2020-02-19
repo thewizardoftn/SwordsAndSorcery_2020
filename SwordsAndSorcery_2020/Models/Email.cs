@@ -40,7 +40,7 @@ namespace SwordsAndSorcery_2020.Models
 
         public Email()
         {
-            IP = Utils.GetIPAddress();
+            IP = HttpContext.Current.Request.UserHostAddress;
             UserType user = UserCache.GetFromCache(0, IP);
             if (user == null)
                 return;                     //this is an indicator that the database is down

@@ -13,7 +13,11 @@ namespace SwordsAndSorcery_2020.Controllers
     {
         public ActionResult Index()
         {
-            UserType user = UserCache.findInCache(Utils.GetIPAddress());
+            if(ViewBag.IPAddress == null)
+            {
+                ViewBag.IPAddress = HttpContext.Request.UserHostAddress;
+            }
+            UserType user = UserCache.findInCache(ViewBag.IPAddress);
             if (user == null)
                 Response.Redirect("Home");
             else if (user.UserID != 2)

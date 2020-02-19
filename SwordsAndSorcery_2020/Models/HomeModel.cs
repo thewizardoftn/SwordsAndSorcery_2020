@@ -13,7 +13,7 @@ namespace SwordsAndSorcery_2020.Models
         public int UserID { get; set; }
         public HomeModel()
         {
-            UserType user = UserCache.GetFromCache(0, Utils.GetIPAddress());
+            UserType user = UserCache.GetFromCache(0, HttpContext.Current.Request.UserHostAddress);
             UserID = user.UserID;
         }
         public string SaveEMail(string email, string name)

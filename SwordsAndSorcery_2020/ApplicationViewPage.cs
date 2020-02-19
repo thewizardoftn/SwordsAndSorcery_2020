@@ -22,8 +22,8 @@ namespace SwordsAndSorcery_2020
             //deal with the root being a blank
             if (Page.Length == 0)
                 Page = "home";
-            string IP = Utils.GetIPAddress();
-            
+            string IP = HttpContext.Current.Request.UserHostAddress;
+
             if (!Request.Url.AbsoluteUri.Contains("localhost"))
             {
                 PageHit p = new PageHit(Page, IP);

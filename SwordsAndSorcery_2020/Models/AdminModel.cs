@@ -40,7 +40,7 @@ namespace SwordsAndSorcery_2020.Models
 
         public AdminModel()
         {
-            UserType user = UserCache.GetFromCache(0, Utils.GetIPAddress());
+            UserType user = UserCache.GetFromCache(0, HttpContext.Current.Request.UserHostAddress);
             UserID = user.UserID;
 
             AdminRepository a = new AdminRepository(UserID, "AdminModel", "AdminModel");
