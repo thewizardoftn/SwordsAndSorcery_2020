@@ -137,7 +137,7 @@ namespace SwordsAndSorcery_2020.Models
             {
                 MailMessage mail = new MailMessage(FromAddress, ToAddress);
                 mail.Subject = Subject;
-                mail.Body = Message;
+                mail.Body = Message + "<br />From: " + IP;
                 mail.IsBodyHtml = true;
 
                 if (AttachedFile != null)
@@ -161,20 +161,22 @@ namespace SwordsAndSorcery_2020.Models
                 if (ex.Message.Contains("Greylisted"))
                 {
                     System.Threading.Thread.Sleep(60000);
-                    SendEmail(false);
+                    bRet = SendEmail(false);
                 }
-                SaveError error = new SaveError();
-                ErrorType err = new ErrorType
+                if (!bRet)
                 {
-                    Err_Message = ex.Message,
-                    Err_Subject = "Email Failure",
-                    Page = "Email.cs",
-                    Process = "SendEmail",
-                    UserID = UserID,
-                    LiteralDesc = ex.StackTrace.ToString()
-                };
-
-                error.ReportError(err);
+                    SaveError error = new SaveError();
+                    ErrorType err = new ErrorType
+                    {
+                        Err_Message = ex.Message,
+                        Err_Subject = "Email Failure",
+                        Page = "Email.cs",
+                        Process = "SendEmail",
+                        UserID = UserID,
+                        LiteralDesc = ex.StackTrace.ToString()
+                    };
+                    error.ReportError(err);
+                }
             }
 
             return bRet;

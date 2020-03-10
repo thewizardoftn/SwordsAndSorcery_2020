@@ -67,7 +67,7 @@ namespace SwordsAndSorcery_2020.Controllers
             }
             else
             {
-                bool res = model.SaveFeedback(ViewBag.IPAddress.StringSafe());
+                bool res = model.SaveFeedback(HttpContext.Request.UserHostAddress.StringSafe());
                 if (res)
                 {
                     Email e = new Email();
@@ -75,8 +75,8 @@ namespace SwordsAndSorcery_2020.Controllers
                     e.Message = model.Message;
                     e.SenderName = model.SenderName;
                     e.Subject = "Feedback from Swords and Sorcery";
+                    e.IP = HttpContext.Request.UserHostAddress.StringSafe();
                     e.SendEmail(false);
-                    e.IP = ViewBag.IPAddress.StringSafe();
                     return View("Index");
                 }
                 else
